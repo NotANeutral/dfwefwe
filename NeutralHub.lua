@@ -18266,7 +18266,7 @@ ExecuteNowTP([[
         game.Loaded:Wait()
     end
     repeat wait() until game.Players.LocalPlayer
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/File-Script/Slap_Battles.lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua?token=GHSAT0AAAAAAD4GWN7RIZWUICC5XOB6ORKK2P3KMGQ"))()
 ]])
 end
 end))
