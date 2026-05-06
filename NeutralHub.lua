@@ -43,139 +43,12 @@ local function Create(Name, Properties, Children)
     return Object
 end
 local TweenService = game:GetService("TweenService")
-local HttpService = game:GetService("HttpService")
-local SaveFileName = "NeutralHub_UI_Settings.json"
-_G.NeutralHub_IsTeleporting = false
-
-local function SafeTeleport(placeId)
-	if type(placeId) ~= "number" then return end
-	if placeId == game.PlaceId then
-		pcall(function() Notification("Already in target place", _G.TimeNotify) end)
-		return
-	end
-	if _G.NeutralHub_IsTeleporting then
-		pcall(function() Notification("Teleport already in progress", _G.TimeNotify) end)
-		return
-	end
-	_G.NeutralHub_IsTeleporting = true
-	if writefile and isfile then
-		pcall(function()
-			writefile("NeutralHub_just_teleported", tostring(os.time()))
-		end)
-	end
-	task.spawn(function()
-		local ok, err = pcall(function()
-			game:GetService("TeleportService"):Teleport(placeId)
-		end)
-		if not ok then
-			pcall(function() Notification("Teleport failed: "..tostring(err), _G.TimeNotify) end)
-		end
-		task.delay(2, function() _G.NeutralHub_IsTeleporting = false end)
-	end)
-end
-
-local function SaveUISettings()
-	pcall(function()
-		if writefile then
-			local data = {
-				ChooseNotify = _G.ChooseNotify,
-				NotificationSound = _G.NotificationSound,
-				VolumeTime = _G.VolumeTime,
-				TimeNotify = _G.TimeNotify
-			}
-			writefile(SaveFileName, HttpService:JSONEncode(data))
-		end
-	end)
-end
-
-local function LoadUISettings()
-	pcall(function()
-		if readfile and isfile and isfile(SaveFileName) then
-			local content = readfile(SaveFileName)
-			local data = HttpService:JSONDecode(content)
-			if data.ChooseNotify then _G.ChooseNotify = data.ChooseNotify end
-			if data.NotificationSound ~= nil then _G.NotificationSound = data.NotificationSound end
-			if data.VolumeTime then _G.VolumeTime = data.VolumeTime end
-			if data.TimeNotify then _G.TimeNotify = data.TimeNotify end
-		end
-	end)
-end
-
-LoadUISettings()
--- Best-effort: queue this script to run after teleport if the executor supports it.
-local function SetupQueueOnTeleport()
-	local q = (syn and syn.queue_on_teleport) or (queue_on_teleport) or (fluxus and fluxus.queue_on_teleport)
-	if not q then return false end
-	local bootstrap = [[
-		task.wait(7)
-		pcall(function()
-			if isfile and isfile('NeutralHub_autorun.lua') then
-				local s = readfile('NeutralHub_autorun.lua')
-				if s then loadstring(s)() end
-			elseif isfile and isfile('Новий Текстовий документ.txt') then
-				local s = readfile('Новий Текстовий документ.txt')
-				if s then loadstring(s)() end
-			end
-		end)
-	]]
-	pcall(function() q(bootstrap) end)
-	-- Attempt to write an autorun copy of the current script (best-effort; depends on readfile permissions)
-	pcall(function()
-		if writefile and isfile and not isfile('NeutralHub_autorun.lua') then
-			if isfile('Новий Текстовий документ.txt') then
-				writefile('NeutralHub_autorun.lua', readfile('Новий Текстовий документ.txt'))
-			elseif isfile('NeutralHub.lua') then
-				writefile('NeutralHub_autorun.lua', readfile('NeutralHub.lua'))
-			end
-		end
-	end)
-	return true
-end
-
-pcall(SetupQueueOnTeleport)
-local function MonitorAfterTeleport()
-	local duration = 8
-	local interval = 0.5
-	local samples = math.max(1, math.floor(duration / interval))
-	local sum = 0
-	for i = 1, samples do
-		local ok, fps = pcall(function() return workspace:GetRealPhysicsFPS() end)
-		if not ok or not fps then fps = 0 end
-		sum = sum + fps
-		task.wait(interval)
-	end
-	local avg = sum / samples
-	if avg < 30 then
-		pcall(function()
-			for k, v in pairs(_G) do
-				if type(v) == "boolean" then
-					local key = tostring(k):lower()
-					if key:find("auto") or key:find("anti") then
-						_G[k] = false
-					end
-				end
-			end
-		end)
-		pcall(function() Notification("NeutralHub: Low FPS detected after teleport — auto features disabled", 6) end)
-	else
-		pcall(function() Notification("NeutralHub: Post-teleport check OK (FPS: "..math.floor(avg)..")", 3) end)
-	end
-end
-
--- If there is a marker file left by SafeTeleport, run monitor and remove it
-pcall(function()
-	if isfile and isfile("NeutralHub_just_teleported") then
-		pcall(function() delfile("NeutralHub_just_teleported") end)
-		task.spawn(MonitorAfterTeleport)
-	end
-end)
-if game.CoreGui:FindFirstChild("NeutralHubCooldown") == nil then
-local gui = Create("ScreenGui", {Name = "NeutralHubCooldown", IgnoreGuiInset = true, Parent = game.CoreGui})
+if game.CoreGui:FindFirstChild("Cooldown Script") == nil then
+local gui = Create("ScreenGui", {Name = "Cooldown Script", IgnoreGuiInset = true, Parent = game.CoreGui})
 local ImageLabel = Create("ImageLabel", {
     Size = UDim2.new(0.215, 0, 0.059, 0),
     Position = UDim2.new(1.01, 0, 0.305, -50),
-	BackgroundTransparency = 0,
-	BackgroundColor3 = Color3.fromRGB(18,18,18),
+    BackgroundTransparency = 1,
     AnchorPoint = Vector2.new(1, 0),
     Image = "rbxassetid://17253889398",
     ImageColor3 = Color3.fromRGB(255,255,255),
@@ -183,19 +56,10 @@ local ImageLabel = Create("ImageLabel", {
     ClipsDescendants = true,
     Parent = gui
 }, {
-	Create("UIAspectRatioConstraint", {
+    Create("UIAspectRatioConstraint", {
         AspectRatio = 6.438,
         AspectType = Enum.AspectType.FitWithinMaxSize
     })
-	,
-		Create("UICorner", {
-		CornerRadius = UDim.new(0, 18)
-	}),
-	Create("UIStroke", {
-		Color = Color3.fromRGB(45,45,45),
-		Thickness = 1,
-		Transparency = 0.2
-	})
 })
 
 local FrameBar = Create("Frame", {
@@ -243,26 +107,26 @@ local TextLabel = Create("TextLabel", {
 })
 end
 function Cooldown(time, text, call)
-	if game.CoreGui:FindFirstChild("NeutralHubCooldown") then
-		if game.CoreGui["NeutralHubCooldown"].ImageLabel.Visible then return end
-		game.CoreGui["NeutralHubCooldown"].ImageLabel.TextLabel.Text = text
-		game.CoreGui["NeutralHubCooldown"].ImageLabel.Visible = true
-		TweenService:Create(game.CoreGui["NeutralHubCooldown"].ImageLabel, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.98, 0, 0.3, -50)}):Play()
-		TweenService:Create(game.CoreGui["NeutralHubCooldown"].ImageLabel.TextLabel, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Rotation = -15}):Play()
-		TweenService:Create(game.CoreGui["NeutralHubCooldown"].ImageLabel.TextLabel, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Rotation = 0}):Play()
-		local BarTween = TweenService:Create(game.CoreGui["NeutralHubCooldown"].ImageLabel.Frame, TweenInfo.new(time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0.001, 0, 0.98, 0)})
+	if game.CoreGui:FindFirstChild("Cooldown Script") then
+		if game.CoreGui["Cooldown Script"].ImageLabel.Visible then return end
+		game.CoreGui["Cooldown Script"].ImageLabel.TextLabel.Text = text
+		game.CoreGui["Cooldown Script"].ImageLabel.Visible = true
+		TweenService:Create(game.CoreGui["Cooldown Script"].ImageLabel, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Position = UDim2.new(0.98, 0, 0.3, -50)}):Play()
+		TweenService:Create(game.CoreGui["Cooldown Script"].ImageLabel.TextLabel, TweenInfo.new(0.3, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Rotation = -15}):Play()
+		TweenService:Create(game.CoreGui["Cooldown Script"].ImageLabel.TextLabel, TweenInfo.new(0.2, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {Rotation = 0}):Play()
+		local BarTween = TweenService:Create(game.CoreGui["Cooldown Script"].ImageLabel.Frame, TweenInfo.new(time, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Size = UDim2.new(0.001, 0, 0.98, 0)})
 		BarTween:Play()
 		BarTween.Completed:Wait()
 		pcall(call)
-		game.CoreGui["NeutralHubCooldown"].ImageLabel.Visible = false
-		game.CoreGui["NeutralHubCooldown"].ImageLabel.Frame.Size = UDim2.new(1, 0, 0.98, 0)
-		game.CoreGui["NeutralHubCooldown"].ImageLabel.TextLabel.Rotation = 15
-		TweenService:Create(game.CoreGui["NeutralHubCooldown"].ImageLabel, TweenInfo.new(0.06, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Position = UDim2.new(1.01, 0, 0.305, -50)}):Play()
+		game.CoreGui["Cooldown Script"].ImageLabel.Visible = false
+		game.CoreGui["Cooldown Script"].ImageLabel.Frame.Size = UDim2.new(1, 0, 0.98, 0)
+		game.CoreGui["Cooldown Script"].ImageLabel.TextLabel.Rotation = 15
+		TweenService:Create(game.CoreGui["Cooldown Script"].ImageLabel, TweenInfo.new(0.06, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {Position = UDim2.new(1.01, 0, 0.305, -50)}):Play()
 	end
 end
-if game.CoreGui:FindFirstChild("NeutralHubRoll") == nil then
+if game.CoreGui:FindFirstChild("Gui Roll Script") == nil then
 local gui = Instance.new("ScreenGui", game.CoreGui)
-gui.Name = "NeutralHubRoll"
+gui.Name = "Gui Roll Script"
 gui.Enabled = false
 
 local Players = game:GetService("Players")
@@ -283,15 +147,12 @@ local function Create(Name, Properties, Children)
 end
 
 local Frame = Create("Frame", {
-	Name = "UAbilityFrame",
-	Size = UDim2.new(0.3, 0, 0.5, 0),
-	Position = UDim2.new(0.65, 0, 0.5, 0),
-	BackgroundTransparency = 0,
-	BackgroundColor3 = Color3.fromRGB(18,18,18),
-	ZIndex = 1,
-	Parent = gui
-}, {
-	Create("UICorner", {CornerRadius = UDim.new(0, 18)})
+    Name = "UAbilityFrame",
+    Size = UDim2.new(0.3, 0, 0.5, 0),
+    Position = UDim2.new(0.65, 0, 0.5, 0),
+    BackgroundTransparency = 1,
+    ZIndex = 1,
+    Parent = gui
 })
 
 local FrameB = Create("ImageButton", {
@@ -299,18 +160,16 @@ local FrameB = Create("ImageButton", {
     AnchorPoint = Vector2.new(0.5, 0.5),
     Size = UDim2.new(0.45, 0, 0.45, 0),
     Position = UDim2.new(0.7, -25, -0.25, -25),
-	BackgroundTransparency = 0,
-	BackgroundColor3 = Color3.fromRGB(25,25,25),
+    BackgroundTransparency = 1,
     ZIndex = 1,
     Draggable = true,
     Parent = Frame
 }, {
-	Create("UIAspectRatioConstraint", {
+    Create("UIAspectRatioConstraint", {
         AspectType = Enum.AspectType.FitWithinMaxSize,
         AspectRatio = 1,
         DominantAxis = "Width"
     })
-	, Create("UICorner", {CornerRadius = UDim.new(0, 18)})
 })
 
 local UButton = Create("ImageLabel", {
@@ -390,13 +249,13 @@ FrameB.MouseButton1Click:Connect(function()
 end)
 end
 function ShowButtonU(show)
-	if game.CoreGui:FindFirstChild("NeutralHubRoll") then
-		game.CoreGui:FindFirstChild("NeutralHubRoll").Enabled = show
+	if game.CoreGui:FindFirstChild("Gui Roll Script") then
+		game.CoreGui:FindFirstChild("Gui Roll Script").Enabled = show
 	end
 end
 table.insert(_G.ConnectFun, UserInputService.InputBegan:Connect(function(input, gameProcessed)
 	if gameProcessed then return end
-	if not (game.CoreGui:FindFirstChild("NeutralHubRoll") and game.CoreGui:FindFirstChild("NeutralHubRoll").Enabled) then return end
+	if not game.CoreGui:FindFirstChild("Gui Roll Script").Enabled then return end
 	if input.KeyCode == Enum.KeyCode.U then
 		local Players = game:GetService("Players")
 		local AnimationRoll = Instance.new("Animation")
@@ -433,52 +292,28 @@ table.insert(_G.ConnectFun, UserInputService.InputBegan:Connect(function(input, 
 	    end
 	end
 end))
-if game.CoreGui:FindFirstChild("NeutralHubTrack") == nil then
+if game.CoreGui:FindFirstChild("Gui Track") == nil then
 local gui = Instance.new("ScreenGui", game.CoreGui)
-gui.Name = "NeutralHubTrack"
+gui.Name = "Gui Track"
 gui.Enabled = false
 
-
--- Slap Aura: F-toggle and heartbeat (no on-screen indicator)
-_G.SlapAuraEnabled = _G.SlapAuraEnabled or false
-do
-	local RunService = game:GetService("RunService")
-	local UIS = game:GetService("UserInputService")
-
-	UIS.InputBegan:Connect(function(input, gameProcessed)
-		if gameProcessed then return end
-		if input.UserInputType == Enum.UserInputType.Keyboard and input.KeyCode == Enum.KeyCode.F then
-			_G.SlapAuraEnabled = not _G.SlapAuraEnabled
-			pcall(function() Notification("Slap Aura " .. (_G.SlapAuraEnabled and "Enabled" or "Disabled"), 2) end)
-		end
-	end)
-
-	RunService.Heartbeat:Connect(function()
-		if not _G.SlapAuraEnabled then return end
-		pcall(function()
-			if type(_G.SlapAuraAction) == "function" then
-				_G.SlapAuraAction()
-			end
-		end)
-	end)
-end
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(0.2, 0, 0.1, 0)
 Frame.Position = UDim2.new(0.02, 0, 0.87, 0)
-Frame.BackgroundColor3 = Color3.fromRGB(18,18,18)
-Frame.BorderColor3 = Color3.fromRGB(35,35,35)
+Frame.BackgroundColor3 = Color3.new(1, 1, 1)
+Frame.BorderColor3 = Color3.new(0, 0, 0)
 Frame.BorderSizePixel = 1
 Frame.Active = true
 Frame.BackgroundTransparency = 0 
 Frame.Parent = gui
 
 local UICorner = Instance.new("UIStroke")
-UICorner.Color = Color3.fromRGB(25,25,25)
-UICorner.Thickness = 1.5
+UICorner.Color = Color3.new(0, 0, 0)
+UICorner.Thickness = 2.5
 UICorner.Parent = Frame
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 18)
+UICorner.CornerRadius = UDim.new(0, 8)
 UICorner.Parent = Frame
 
 local Frame1 = Instance.new("Frame")
@@ -492,7 +327,7 @@ Frame1.BackgroundTransparency = 0.3
 Frame1.Parent = Frame
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 18)
+UICorner.CornerRadius = UDim.new(0, 8)
 UICorner.Parent = Frame1
 
 local Frame2 = Instance.new("Frame")
@@ -507,7 +342,7 @@ Frame2.BackgroundTransparency = 0.15
 Frame2.Parent = Frame1
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 18)
+UICorner.CornerRadius = UDim.new(0, 8)
 UICorner.Parent = Frame2
 
 local TextLabel = Instance.new("TextLabel")
@@ -1373,7 +1208,7 @@ if MobileOn then
 end
 if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 then
 Window = Library:CreateWindow({
-	Title = "NeutralHub",
+    Title = "Neutral Hub - Slap Battles",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -2127,8 +1962,7 @@ for _, v in pairs(game.Workspace:GetChildren()) do
                   v.CanTouch = true
              end
          end
-	end
-    
+    end
 end
     end
 })
@@ -3197,11 +3031,7 @@ end
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(74169485398268)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(74169485398268)
     end
 })
 
@@ -3263,11 +3093,7 @@ end)
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(101113181694564)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(101113181694564)
     end
 })
 
@@ -3293,11 +3119,7 @@ for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(17290438723)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(17290438723)
   	end    
 })
 
@@ -3332,11 +3154,7 @@ end
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(106620300132058)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(106620300132058)
   	end    
 })
 
@@ -3480,20 +3298,12 @@ end
 wait(0.25)
 fireclickdetector(game.Workspace.Map.OriginOffice.Door.Keypad.Buttons.Enter.ClickDetector)
 wait(0.5)
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(6403373529)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(6403373529)
     ]])
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(9431156611)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(9431156611)
 else
 Notification("You don't have 1000 slap.", _G.TimeNotify)
 end
@@ -3547,11 +3357,7 @@ end)
 elseif not teleportFunc then
 Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
 end
-task.spawn(function()
-	pcall(function()
-		SafeTeleport(11828384869)
-	end)
-end)
+game:GetService("TeleportService"):Teleport(11828384869)
     end
 })
 
@@ -3861,7 +3667,7 @@ end
 })
 
 Badge1Group:AddButton({
-    Text = "Get Fight Guide",
+    Text = "Fight Guide",
     Func = function()
 local teleportFunc = queueonteleport or queue_on_teleport
 if teleportFunc then
@@ -3918,7 +3724,7 @@ end
 local Badge2Group = Tabs.Tab3:AddRightGroupbox("Badge")
 
 Badge2Group:AddButton({
-    Text = "Get Glove Kinetic",
+    Text = "Get Glove Kinetic spoiler:(ur gonna get kicked heh)",
     Func = function()
 if CheckGlove() == "Stun" and game.Players.LocalPlayer.Character:FindFirstChild("entered") then
 OGL = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -4020,7 +3826,7 @@ end
 })
 
 Badge2Group:AddButton({
-    Text = "Get Glove Pyscho (Win Obby)",
+    Text = "Get Glove Pyscho (enter limbo first)",
     Func = function()
 if game.Workspace:FindFirstChild("RepressedMemoriesMap") then
 OldPlayerCF = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -4077,7 +3883,7 @@ local Dialog8Step = {
     [7] = "STEP 5",
     [8] = "STEP 6",
     [9] = "STEP 7",
-    [10] = "STEP 8, DEEEEEEEEEEEEEEE"
+    [10] = "STEP 8, DO IT but first if he didnt say simon says do the thing otherwise"
 }
 if rm and dialog then
     local NumberQuest = 1
@@ -4095,7 +3901,7 @@ if rm and dialog then
         end
     end
 else
-Notification("You have enter limbo [ don't show all, not work ]", _G.TimeNotify)
+Notification("You have to enter limbo [ don't show all, not work ]", _G.TimeNotify)
 end
     end
 })
@@ -4484,7 +4290,7 @@ end
 })
 
 Badge2Group:AddButton({
-    Text = "Get Join Limbo",
+    Text = "Join Limbo",
     Func = function()
 if CheckGlove() == "Reverse" then
 	if not workspace:FindFirstChild("Limbo Ducky Teleport") then
@@ -4605,7 +4411,7 @@ end
 })
 
 Badge2Group:AddButton({
-    Text = "Join JOB!?!?!",
+    Text = "Join JOB!?!?! JOBBIE JOBBIE",
     Func = function()
 if fireclickdetector then
 fireclickdetector(workspace.Lobby["Extended"].ClickDetector)
@@ -6129,11 +5935,11 @@ fireclickdetector(v.Click.ClickDetector, 1)
 end
 end
 end
-if game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == false then
-game.CoreGui["NeutralHubTrack"].Enabled = true
-elseif game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == true then
-game.CoreGui["NeutralHubTrack"].Frame:FindFirstChild("TextLabel").Text = "Tycoon Your Point\n"..game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount").." / 15000"
-game.CoreGui["NeutralHubTrack"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount") / 15000, 0, 1, 0)
+if game.CoreGui:FindFirstChild("Gui Track").Enabled == false then
+game.CoreGui["Gui Track"].Enabled = true
+elseif game.CoreGui:FindFirstChild("Gui Track").Enabled == true then
+game.CoreGui["Gui Track"].Frame:FindFirstChild("TextLabel").Text = "Tycoon Your Point\n"..game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount").." / 15000"
+game.CoreGui["Gui Track"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount") / 15000, 0, 1, 0)
 end
 elseif game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name) == nil then
 game:GetService("ReplicatedStorage"):WaitForChild("GeneralAbility"):FireServer(CFrame.new(17894, -26.257728576660156, -3579.11279296875, 0.9996822476387024, -1.1041408759515647e-10, 0.02520809881389141, 2.8899729831444176e-10, 1, -7.080715569429685e-09, -0.02520809881389141, 7.085750652890965e-09, 0.9996822476387024))
@@ -6145,10 +5951,10 @@ end)
 wait(1)
 end
 if game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name) and game.Workspace["ÅTycoon"..game.Players.LocalPlayer.Name]:GetAttribute("LastCount") >= 15000 then
-if game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == true then
-game.CoreGui["NeutralHubTrack"].Enabled = false
-game.CoreGui["NeutralHubTrack"].Frame:FindFirstChild("TextLabel").Text = "Nah"
-game.CoreGui["NeutralHubTrack"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
+if game.CoreGui:FindFirstChild("Gui Track").Enabled == true then
+game.CoreGui["Gui Track"].Enabled = false
+game.CoreGui["Gui Track"].Frame:FindFirstChild("TextLabel").Text = "Nah"
+game.CoreGui["Gui Track"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
 end
 repeat task.wait()
 game.Players.LocalPlayer.Character:SetPrimaryPartCFrame(game.Workspace.DEATHBARRIER.CFrame)
@@ -6223,11 +6029,11 @@ fireclickdetector(v.Click.ClickDetector, 1)
 end
 end
 end
-if game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == false then
-	game.CoreGui["NeutralHubTrack"].Enabled = true
-elseif game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == true then
-	game.CoreGui["NeutralHubTrack"].Frame:FindFirstChild("TextLabel").Text = "Tycoon Your Point\n"..game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount").." / 5000"
-	game.CoreGui["NeutralHubTrack"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount") / 5000, 0, 1, 0)
+if game.CoreGui:FindFirstChild("Gui Track").Enabled == false then
+game.CoreGui["Gui Track"].Enabled = true
+elseif game.CoreGui:FindFirstChild("Gui Track").Enabled == true then
+game.CoreGui["Gui Track"].Frame:FindFirstChild("TextLabel").Text = "Tycoon Your Point\n"..game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount").." / 5000"
+game.CoreGui["Gui Track"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name):GetAttribute("LastCount") / 5000, 0, 1, 0)
 end
 elseif game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name) == nil then
 game:GetService("ReplicatedStorage"):WaitForChild("GeneralAbility"):FireServer(CFrame.new(17894, -26.257728576660156, -3579.11279296875, 0.9996822476387024, -1.1041408759515647e-10, 0.02520809881389141, 2.8899729831444176e-10, 1, -7.080715569429685e-09, -0.02520809881389141, 7.085750652890965e-09, 0.9996822476387024))
@@ -6239,10 +6045,10 @@ end)
 wait(1)
 end
 if game.Workspace:FindFirstChild("ÅTycoon"..game.Players.LocalPlayer.Name) and game.Workspace["ÅTycoon"..game.Players.LocalPlayer.Name]:GetAttribute("LastCount") >= 5000 then
-if game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == true then
-	game.CoreGui["NeutralHubTrack"].Enabled = false
-	game.CoreGui["NeutralHubTrack"].Frame:FindFirstChild("TextLabel").Text = "Nah"
-	game.CoreGui["NeutralHubTrack"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
+if game.CoreGui:FindFirstChild("Gui Track").Enabled == true then
+game.CoreGui["Gui Track"].Enabled = false
+game.CoreGui["Gui Track"].Frame:FindFirstChild("TextLabel").Text = "Nah"
+game.CoreGui["Gui Track"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
 end
 if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 for i,v in pairs(game.Players:GetChildren()) do
@@ -6270,10 +6076,10 @@ end
 end
 task.wait()
 end
-if game.CoreGui:FindFirstChild("NeutralHubTrack").Enabled == true then
-game.CoreGui["NeutralHubTrack"].Enabled = false
-game.CoreGui["NeutralHubTrack"].Frame:FindFirstChild("TextLabel").Text = "Nah"
-game.CoreGui["NeutralHubTrack"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
+if game.CoreGui:FindFirstChild("Gui Track").Enabled == true then
+game.CoreGui["Gui Track"].Enabled = false
+game.CoreGui["Gui Track"].Frame:FindFirstChild("TextLabel").Text = "Nah"
+game.CoreGui["Gui Track"].Frame.Frame:FindFirstChild("Frame1").Size = UDim2.new(1, 0, 1, 0)
 end
 elseif Value == true then
 Notification("You don't have Tycoon equipped", _G.TimeNotify)
@@ -6865,8 +6671,8 @@ end
 if _G.CloudMastery == "Studs (200k Fly)" then
 if game.Players.LocalPlayer.Character:FindFirstChild("entered") then
 local TweenPlay = {
-	CFrame.new(730, 128, -600),
-	CFrame.new(-680, 22, 500)
+	CFrame.new(-600.382629, 148.508713, 655.76593),
+	CFrame.new(-869.140259, 135.50238, -173.050003)
 }
 function NextTween()
     local TweenNextGo = TweenPlay[TweenGet]
@@ -14104,7 +13910,7 @@ Button.Position = UDim2.new(0.120833337 - 0.1, 0, 0.0952890813 + 0.01, 0)
 Button.Size = UDim2.new(0, 50, 0, 50)
 Button.Draggable = true
 Corner.Parent = Button
-Corner.CornerRadius = UDim.new(0, 18)
+Corner.CornerRadius = UDim.new(0, 12)
 ParticleEmitter.Parent = Button
 ParticleEmitter.LightEmission = 1
 ParticleEmitter.Size = NumberSequence.new({
@@ -17781,7 +17587,7 @@ end
 
 local success, err = pcall(function()
 	getgenv().WindowNah = Window
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/File-Script/CreditJoin.Lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua"))()
 end)
 
 local MenuGroup = Tabs["UI Settings"]:AddLeftGroupbox("Menu") 
@@ -17808,13 +17614,13 @@ _G.ChooseNotify = Value
     end
 })
 
-_G.BackpackV2 = false
+_G.BackpackV2 = true
 MenuGroup:AddToggle("Backpack v2", {
-	 Text = "Backpack v2",
-	 Default = false, 
-	 Callback = function(Value) 
- _G.BackpackV2 = Value 
-	 end
+    Text = "Backpack v2",
+    Default = true, 
+    Callback = function(Value) 
+_G.BackpackV2 = Value 
+    end
 })
 
 _G.NotificationSound = true
@@ -17906,14 +17712,13 @@ Library.ToggleKeybind = Options.MenuKeybind
 
 ThemeManager:SetLibrary(Library)
 SaveManager:SetLibrary(Library)
--- Allow ThemeManager to save theme parameters (removed IgnoreThemeSettings)
+SaveManager:IgnoreThemeSettings()
 SaveManager:BuildConfigSection(Tabs["UI Settings"])
 ThemeManager:ApplyToTab(Tabs["UI Settings"])
 SaveManager:LoadAutoloadConfig()
 
 ------------------------------------------------------------------------
 Library:OnUnload(function()
-    pcall(SaveUISettings)
 	_G.BackpackV2 = false
 	_G.BackpackV2Loop = false
 	if _G.ConnectFun then
@@ -17923,11 +17728,11 @@ Library:OnUnload(function()
 	_G.ConnectFun = nil
 	end
 	local CoreGui = game.CoreGui
-	if CoreGui:FindFirstChild("NeutralHubTrack") then
-		CoreGui:FindFirstChild("NeutralHubTrack"):Destroy()
+	if CoreGui:FindFirstChild("Gui Track") then
+		CoreGui:FindFirstChild("Gui Track"):Destroy()
 	end
-	if CoreGui:FindFirstChild("NeutralHubRoll") then
-		CoreGui:FindFirstChild("NeutralHubRoll"):Destroy()
+	if CoreGui:FindFirstChild("Gui Roll Script") then
+		CoreGui:FindFirstChild("Gui Roll Script"):Destroy()
 	end
 	if CoreGui:FindFirstChild("ClickButton") then
 		CoreGui:FindFirstChild("ClickButton"):Destroy()
@@ -18059,7 +17864,7 @@ v.SelectionObjectClipper.Visible = false
 end
 if v:FindFirstChild("UICorner") == nil then
 local RobloxUi = Instance.new("UICorner", v)
-RobloxUi.CornerRadius = UDim.new(0, 18)
+RobloxUi.CornerRadius = UDim.new(0, 10)
 end
 end
 end
@@ -18075,7 +17880,7 @@ v.SelectionObjectClipper.Visible = false
 end
 if v:FindFirstChild("UICorner") == nil then
 local RobloxUi = Instance.new("UICorner", v)
-RobloxUi.CornerRadius = UDim.new(0, 18)
+RobloxUi.CornerRadius = UDim.new(0, 10)
 end
 end
 end
@@ -18083,17 +17888,17 @@ for i, v in pairs(game:GetService("CoreGui").RobloxGui.Backpack.Inventory:GetChi
 if v.Name == "Search" then
 if v:FindFirstChild("UICorner") == nil then
 local RobloxUi = Instance.new("UICorner", v)
-RobloxUi.CornerRadius = UDim.new(0, 18)
+RobloxUi.CornerRadius = UDim.new(0, 10)
 end
 if v:FindFirstChild("X") and v["X"]:FindFirstChild("UICorner") == nil then
 local RobloxUi = Instance.new("UICorner", v["X"])
-RobloxUi.CornerRadius = UDim.new(0, 18)
+RobloxUi.CornerRadius = UDim.new(0, 10)
 end
 end
 end
 if game:GetService("CoreGui").RobloxGui.Backpack:FindFirstChild("Inventory") and game:GetService("CoreGui").RobloxGui.Backpack.Inventory:FindFirstChild("UICorner") == nil then
 local RobloxUi = Instance.new("UICorner", game:GetService("CoreGui").RobloxGui.Backpack.Inventory)
-RobloxUi.CornerRadius = UDim.new(0, 18)
+RobloxUi.CornerRadius = UDim.new(0, 10)
 end
 elseif _G.BackpackV2 == false then
 if game:GetService("CoreGui").RobloxGui.Backpack.Hotbar:FindFirstChild("UIListLayout") then
@@ -18266,7 +18071,7 @@ ExecuteNowTP([[
         game.Loaded:Wait()
     end
     repeat wait() until game.Players.LocalPlayer
-	loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua"))()"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua"))()
 ]])
 end
 end))
