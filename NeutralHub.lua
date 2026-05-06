@@ -18266,7 +18266,7 @@ ExecuteNowTP([[
         game.Loaded:Wait()
     end
     repeat wait() until game.Players.LocalPlayer
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua"))()
+	loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/NeutralHub.lua"))()"))()
 ]])
 end
 end))
