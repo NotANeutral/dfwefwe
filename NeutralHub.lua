@@ -9710,7 +9710,7 @@ Misc2Group:AddToggle("Start Fly", {
 Fly(Value)
 	end
 }):AddKeyPicker("Fly", {
-   Default = "R",
+   Default = "bullshit",
    Text = "Fly",
    Mode = "Toggle",
    SyncToggleState = true
