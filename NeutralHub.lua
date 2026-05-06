@@ -14080,7 +14080,7 @@ for i,v in pairs(game.Workspace.Map.CodeBrick.SurfaceGui:GetChildren()) do
 end
 
 Window = Library:CreateWindow({
-    Title = "Slap Royale 🏆",
+    Title = "Slap Nigger",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -14120,7 +14120,7 @@ task.wait(0.3)
 end
     end
 }):AddKeyPicker("SlapAura", {
-   Default = "F",
+   Default = "na bro dont use it",
    Text = "Slap Aura",
    Mode = "Toggle",
    SyncToggleState = true
