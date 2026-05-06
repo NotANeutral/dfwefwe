@@ -89,7 +89,7 @@ local TextLabel = Create("TextLabel", {
     Rotation = 15,
     TextColor3 = Color3.fromRGB(255,255,255),
     BackgroundTransparency = 1,
-    Font = Enum.Font.FredokaOne,
+    Font = Enum.Font.Arial,
     ZIndex = 2,
     Parent = ImageLabel
 }, {
