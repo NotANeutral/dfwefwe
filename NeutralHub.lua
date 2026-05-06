@@ -12220,8 +12220,8 @@ end
     end
 })
 
-Glove1Group:AddToggle("Godmobe Player", {
-    Text = "Auto Godmobe Player",
+Glove1Group:AddToggle("Godmode Player", {
+    Text = "Auto Godmode Player",
     Default = false, 
     Callback = function(Value) 
 if SaveThePlayer == nil then
@@ -12236,7 +12236,7 @@ end
 elseif GuardianAngelSpam == true then
 Notification("You don't have Guardian Angel equipped.", _G.TimeNotify)
 wait(0.05)
-Toggles["Godmobe Player"]:SetValue(false)
+Toggles["Godmode Player"]:SetValue(false)
 end
     end
 })
@@ -16749,7 +16749,7 @@ end
 })
 elseif game.PlaceId == 106620300132058 then
 Window = Library:CreateWindow({
-    Title = "Plate 🍽️",
+    Title = "Neutral Hub - Plate 🍽️",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -16789,7 +16789,7 @@ end
 end)
 elseif game.PlaceId == 92483185275059 then
 Window = Library:CreateWindow({
-    Title = "Maze Pim 🕳️",
+    Title = "Neutral Hub - Maze Pim 🕳️",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -16851,11 +16851,11 @@ end
 end)
 elseif game.PlaceId == 103505724406848 then
 Window = Library:CreateWindow({
-    Title = "Battles Zombie 🧟",
+    Title = "Neutral Hub - Battles Zombie 🧟",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Halloween | Omega X Article Hub Version: 1.0.5",
+	Footer = "Halloween | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -16902,7 +16902,7 @@ end
 end)
 elseif game.PlaceId == 101113181694564 then
 Window = Library:CreateWindow({
-    Title = "Collect Conker 🍎",
+    Title = "Neutral Hub - Collect Conker 🍎",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -16979,11 +16979,11 @@ if workspace:FindFirstChild("Effects") then
 	workspace:FindFirstChild("Effects"):Destroy()
 end
 Window = Library:CreateWindow({
-    Title = "Boss Jerry ☃️",
+    Title = "Neutral Hub - Boss Jerry ☃️",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "CHRISTMAS | Omega X Article Hub Version: 1.0.5",
+	Footer = "CHRISTMAS | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -17081,11 +17081,11 @@ if not CoreGui:FindFirstChild("ClickButton") then
 	end
 end
 Window = Library:CreateWindow({
-    Title = "SnowBall ☃️",
+    Title = "Neutral Hub - SnowBall ☃️",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "CHRISTMAS | Omega X Article Hub Version: 1.0.5",
+	Footer = "CRIMAAAAAAAA | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -17221,11 +17221,11 @@ function InTable(t, value)
 end
 
 Window = Library:CreateWindow({
-    Title = "JOB APPLICATION!!! 📦",
+    Title = "Neutral Hub - JOB APPLICATION!!! 📦",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -17420,7 +17420,7 @@ MainGroup1:AddButton("Find Glove Sell", function()
 end)
 elseif game.PlaceId == 86045914443715 then
 Window = Library:CreateWindow({
-    Title = "Car Key 🚗",
+    Title = "Neutral Hub - Car Key 🚗",
     Center = true,
     AutoShow = true,
     Resizable = true,
