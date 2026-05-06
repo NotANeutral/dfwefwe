@@ -1208,11 +1208,10 @@ if MobileOn then
 end
 if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Slap Battles",
+    Title = "Slap Battles",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Title.TextScaled = true
 	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 83462777349222,
 	ShowCustomCursor = true,
