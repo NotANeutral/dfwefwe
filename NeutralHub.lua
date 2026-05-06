@@ -313,7 +313,7 @@ UICorner.Thickness = 2.5
 UICorner.Parent = Frame
 
 local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 8)
+UICorner.CornerRadius = UDim.new(0, 16)
 UICorner.Parent = Frame
 
 local Frame1 = Instance.new("Frame")
