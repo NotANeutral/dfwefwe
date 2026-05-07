@@ -14220,15 +14220,6 @@ for i,v in pairs(game.Players:GetChildren()) do
     if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
         v.Character.HumanoidRootPart.Size = Vector3.new(_G.ReachHitbox,_G.ReachHitbox,_G.ReachHitbox)
         v.Character.HumanoidRootPart.Transparency = 0.75
-		if not v.Character:FindFirstChild("HitboxHighlight") then
-    	local Highlight = Instance.new("Highlight")
-    	Highlight.Name = "HitboxHighlight"
-   		 Highlight.FillTransparency = 1
-   		 Highlight.OutlineTransparency = 0
-  		Highlight.OutlineColor = Color3.new(1,1,1)
-   		 Highlight.DepthMode = Enum.HighlightDepthMode.Occluded
-   		 Highlight.Parent = v.Character
-end
     end
 end
 task.wait()
@@ -14239,20 +14230,10 @@ if _G.HitboxPlayer == false then
             v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
             v.Character.HumanoidRootPart.Transparency = 1
 			v.Character.HumanoidRootPart.Material = Enum.Material.Plastic
-			if v.Character:FindFirstChild("HitboxHighlight") then
-   			 v.Character.HitboxHighlight:Destroy()
-			end
         end
     end
 end
     end
-})
-
-}):AddKeyPicker("Hitbox Player", {
-   Default = "Z",
-   Text = "Hitbox Player",
-   Mode = "Toggle",
-   SyncToggleState = true
 })
 
 Combat1Group:AddButton({
