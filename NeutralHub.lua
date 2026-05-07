@@ -1198,12 +1198,44 @@ elseif game.PlaceId == 9431156611 then
 	end
 end
 
-local ESPLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua"))()
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/wefwef.lua"))()
-local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/ThemeManagerCopy.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/SaveManagerCopy.lua"))()
-local Options = Library.Options
-local Toggles = Library.Toggles
+local ESPLibrary = nil
+local Library = nil
+local ThemeManager = nil
+local SaveManager = nil
+do
+	local ok, res = pcall(function()
+		local s = game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua")
+		local f = loadstring(s)
+		return f and f()
+	end)
+	if ok then ESPLibrary = res else ESPLibrary = {} end
+end
+do
+	local ok, res = pcall(function()
+		local s = game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/wefwef.lua")
+		local f = loadstring(s)
+		return f and f()
+	end)
+	if ok and type(res) == "table" then Library = res else Library = {} end
+end
+do
+	local ok, res = pcall(function()
+		local s = game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/ThemeManagerCopy.lua")
+		local f = loadstring(s)
+		return f and f()
+	end)
+	if ok then ThemeManager = res else ThemeManager = {} end
+end
+do
+	local ok, res = pcall(function()
+		local s = game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/SaveManagerCopy.lua")
+		local f = loadstring(s)
+		return f and f()
+	end)
+	if ok then SaveManager = res else SaveManager = {} end
+end
+local Options = Library.Options or {}
+local Toggles = Library.Toggles or {}
 
 -- Notification function defined earlier (safe noop here)
 
