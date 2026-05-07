@@ -13636,7 +13636,7 @@ table.insert(_G.ConnectFun, game.Workspace.NoChanged.Changed:Connect(function()
 end))
 elseif game.PlaceId == 11828384869 then
 Window = Library:CreateWindow({
-    Title = "Maze 👁️",
+    Title = "Maze",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -13701,12 +13701,12 @@ end
 end)
 elseif game.PlaceId == 13833961666 then
 Window = Library:CreateWindow({
-    Title = "Boss Bob 💥",
+    Title = "Eternal Bob bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14084,8 +14084,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14745,12 +14745,12 @@ Animation(Value)
 })
 elseif game.PlaceId == 14422118326 then
 Window = Library:CreateWindow({
-    Title = "Maze Null ☠️",
+    Title = "Null Maze exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14825,12 +14825,12 @@ end
 })
 elseif game.PlaceId == 16034567693 then
 Window = Library:CreateWindow({
-    Title = "ADMIN ROOM 💻",
+    Title = "ADMIN ROOM",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14920,12 +14920,12 @@ Toggles["Anti Afk"]:SetValue(true)
 end)
 elseif game.PlaceId == 17290438723 then
 Window = Library:CreateWindow({
-    Title = "Frostbite Map Obby 🎿",
+    Title = "Frostbite Obby exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14951,12 +14951,12 @@ for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
 end)
 elseif game.PlaceId == 18550498098 then
 Window = Library:CreateWindow({
-    Title = "Boss Guide ⚔️",
+    Title = "Guide Bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15390,12 +15390,12 @@ spawn(function()
 end)
 
 Window = Library:CreateWindow({
-    Title = "Lobby OOG 🐕",
+    Title = "Barzil",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15543,12 +15543,12 @@ end
 
 elseif game.PlaceId == 74169485398268 then
 Window = Library:CreateWindow({
-    Title = "Maze Bind 👁️‍🗨️",
+    Title = "Bind Maze exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15580,8 +15580,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15626,12 +15626,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Furniture
 end)
 elseif game.PlaceId == 115782629143468 then
 Window = Library:CreateWindow({
-    Title = "TOH 🪜",
+    Title = "TOH",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15650,12 +15650,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-31, 187
 end)
 elseif game.PlaceId == 92516899071319 then
 Window = Library:CreateWindow({
-    Title = "Map Dreams 💤",
+    Title = "Dreams exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "113431335912495",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15690,12 +15690,12 @@ workspace["Unstable Artifact"].Handle.CFrame = game.Players.LocalPlayer.Characte
 end)
 elseif game.PlaceId == 118650724506449 then
 Window = Library:CreateWindow({
-    Title = "Bad Dreams 💤",
+    Title = "Bad Dreams",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15714,12 +15714,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.rooms["ro
 end)
 elseif game.PlaceId == 97220865182663 then
 Window = Library:CreateWindow({
-    Title = "Boss Mouse 🐀",
+    Title = "Boss Mouse",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15783,12 +15783,12 @@ end
 })
 elseif game.PlaceId == 98726100529621 then
 Window = Library:CreateWindow({
-    Title = "Map Obby Hexa 🔰",
+    Title = "Hexa exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15834,12 +15834,12 @@ end
 end)
 elseif game.PlaceId == 136005148166028 then
 Window = Library:CreateWindow({
-    Title = "Map Designer Roblox 🛠️",
+    Title = "Designer Roblox exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15854,97 +15854,261 @@ Tabs = {
 local Misc1Group = Tabs.Tab:AddLeftGroupbox("Badge")
 
 Misc1Group:AddButton("Get Badge", function()
-if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-if fireclickdetector then
-fireclickdetector(workspace.Kitchen.Fridge.HitBox:FindFirstChild("ClickDetector"))
+
+local Players = game:GetService("Players")
+local VirtualUser = game:GetService("VirtualUser")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+
+local plr = Players.LocalPlayer
+local char = plr.Character or plr.CharacterAdded:Wait()
+local hrp = char:WaitForChild("HumanoidRootPart")
+local humanoid = char:WaitForChild("Humanoid")
+
+local function safeClick(path)
+	if fireclickdetector and path and path:FindFirstChild("ClickDetector") then
+		fireclickdetector(path.ClickDetector)
+	end
 end
-repeat task.wait() until workspace.Kitchen.Fridge:FindFirstChild("GrantAward") or workspace.Kitchen.Fridge:FindFirstChild("GrantAward") == nil
-wait(0.25)
-if fireclickdetector then
-if workspace.Kitchen.Fridge:FindFirstChild("GrantAward") then
-fireclickdetector(workspace.Kitchen.Fridge.GrantAward:FindFirstChild("ClickDetector"))
+
+local function safePrompt(prompt)
+	if fireproximityprompt and prompt then
+		fireproximityprompt(prompt)
+	end
 end
+
+local function waitForTool(toolName, timeout)
+	local start = tick()
+
+	repeat
+		task.wait()
+	until plr.Backpack:FindFirstChild(toolName)
+		or char:FindFirstChild(toolName)
+		or tick() - start > timeout
+
+	return plr.Backpack:FindFirstChild(toolName)
+		or char:FindFirstChild(toolName)
 end
-repeat task.wait() until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Brewzucki") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki")
-if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki") then
-game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki").Parent = game:GetService("Players").LocalPlayer.Backpack
+
+-- fridge
+safeClick(workspace.Kitchen.Fridge:WaitForChild("HitBox"))
+
+local grantAward = workspace.Kitchen.Fridge:WaitForChild("GrantAward", 10)
+
+if grantAward then
+	task.wait(0.25)
+	safeClick(grantAward)
 end
-wait(0.5)
-if fireclickdetector then
-if workspace.Microwave:FindFirstChild("HitBox") then
-fireclickdetector(workspace.Microwave.HitBox:FindFirstChild("ClickDetector"))
+
+-- wait for Brewzucki
+local tool = waitForTool("Brewzucki", 10)
+
+if not tool then
+	warn("Brewzucki not found")
+	return
 end
+
+-- move tool to backpack
+if char:FindFirstChild("Brewzucki") then
+	char.Brewzucki.Parent = plr.Backpack
 end
-wait(0.8)
-repeat task.wait()
-if fireclickdetector then
-if workspace.Microwave:FindFirstChild("HitBox") then
-fireclickdetector(workspace.Microwave.HitBox:FindFirstChild("ClickDetector"))
+
+task.wait(0.5)
+
+-- microwave
+local microwaveHitbox = workspace.Microwave:WaitForChild("HitBox", 10)
+
+if microwaveHitbox then
+	safeClick(microwaveHitbox)
 end
+
+-- spam until tool comes back
+local startMicrowave = tick()
+
+repeat
+	task.wait(0.5)
+
+	if microwaveHitbox then
+		safeClick(microwaveHitbox)
+	end
+
+	tool = plr.Backpack:FindFirstChild("Brewzucki")
+		or char:FindFirstChild("Brewzucki")
+
+until tool or tick() - startMicrowave > 15
+
+if not tool then
+	warn("Microwave failed")
+	return
 end
-until game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Brewzucki") or game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki")
-wait(0.2)
-if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Brewzucki") then
-game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Brewzucki").Parent = game:GetService("Players").LocalPlayer.Character
+
+task.wait(0.2)
+
+-- equip tool
+if plr.Backpack:FindFirstChild("Brewzucki") then
+	plr.Backpack.Brewzucki.Parent = char
 end
-wait(0.3)
-if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki") then
-game:GetService("Players").LocalPlayer.Character:FindFirstChild("Brewzucki"):Activate()
+
+task.wait(0.3)
+
+-- activate tool
+tool = char:FindFirstChild("Brewzucki")
+
+if tool then
+	pcall(function()
+		tool:Activate()
+	end)
 end
-wait(3.5)
-if fireclickdetector then
-fireclickdetector(workspace.BasementTable.HitBox:FindFirstChild("ClickDetector"))
+
+task.wait(3.5)
+
+-- basement table
+safeClick(workspace.BasementTable:WaitForChild("HitBox"))
+
+task.wait(1)
+
+-- basement door
+local basementPrompt = workspace.BasementDoor.Door.Base:FindFirstChild("ProximityPrompt")
+
+safePrompt(basementPrompt)
+
+task.wait(0.5)
+
+-- computer section
+local computerGui = plr.PlayerGui:WaitForChild("RealComputerScreenGui", 15)
+
+if computerGui then
+
+	local seat = workspace.ComputerChair:FindFirstChild("Seat")
+
+	if seat then
+		seat:Sit(humanoid)
+	end
+
+	repeat task.wait()
+	until computerGui.Enabled == true
+
+	task.wait(0.5)
+
+	local screen = computerGui:FindFirstChild("ComputerScreen")
+
+	if screen and screen:FindFirstChild("SuggestionsQTE") then
+
+		local suggestions = screen.SuggestionsQTE
+
+		repeat
+			task.wait()
+
+			for _,v in pairs(suggestions:GetChildren()) do
+				if v.Name:find("Popup_") and suggestions:FindFirstChild("RecyclingBin") then
+					v.Position = suggestions.RecyclingBin.Position
+				end
+			end
+
+		until screen:FindFirstChild("UpdateGameQTE")
+			and screen.UpdateGameQTE.Visible == true
+
+		local updateFrame = screen.UpdateGameQTE
+
+		if updateFrame.MainFrame:FindFirstChild("PatchNotesTextBox") then
+			updateFrame.MainFrame.PatchNotesTextBox.Text =
+				"Articles - Hub, how do you feel today?"
+		end
+
+		repeat task.wait()
+		until not plr.PlayerGui:FindFirstChild("RealComputerScreenGui")
+
+		task.wait(0.5)
+
+		if humanoid.Sit then
+			humanoid.Sit = false
+		end
+	end
 end
-wait(1)
-if fireproximityprompt then
-fireproximityprompt(workspace.BasementDoor.Door.Base:FindFirstChild("ProximityPrompt"))
+
+task.wait(0.5)
+
+-- teleport to stage
+local closeDoor = workspace.Stages.Stage4:FindFirstChild("CloseDavidsDoor")
+
+if closeDoor then
+	hrp.CFrame = closeDoor.CFrame
 end
-wait(0.5)
-if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("RealComputerScreenGui") ~= nil then
-if workspace.ComputerChair:FindFirstChild("Seat") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.ComputerChair.Seat.CFrame
+
+task.wait(0.7)
+
+-- shrine gui
+local shrineMain = plr.PlayerGui:WaitForChild("DavidShrineQTE", 10)
+
+if not shrineMain then
+	warn("Shrine GUI missing")
+	return
 end
-repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("RealComputerScreenGui") and game:GetService("Players").LocalPlayer.PlayerGui.RealComputerScreenGui.Enabled == true
-wait(0.5)
-if game:GetService("Players").LocalPlayer.PlayerGui.RealComputerScreenGui.ComputerScreen:FindFirstChild("SuggestionsQTE").Visible == true then
-repeat task.wait()
-for i, v in pairs(game.Players.LocalPlayer.PlayerGui.RealComputerScreenGui.ComputerScreen.SuggestionsQTE:GetChildren()) do
-if v.Name:find("Popup_") then
-v.Position = game:GetService("Players").LocalPlayer.PlayerGui.RealComputerScreenGui.ComputerScreen.SuggestionsQTE:FindFirstChild("RecyclingBin").Position
+
+local guiClick = shrineMain:FindFirstChild("DavidShrineQTE")
+
+if not guiClick then
+	warn("Inner shrine GUI missing")
+	return
 end
-end
-until game:GetService("Players").LocalPlayer.PlayerGui.RealComputerScreenGui.ComputerScreen:FindFirstChild("UpdateGameQTE").Visible == true
-game:GetService("Players").LocalPlayer.PlayerGui.RealComputerScreenGui.ComputerScreen.UpdateGameQTE.MainFrame.PatchNotesTextBox.Text = "Articles - Hub, how do you feel, or are things in your life okay, you must be struggling, do you see you are tired or not?, Skibidi Toilet Dop Dop Yes Yes"
-repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("RealComputerScreenGui") == nil
-wait(0.5)
-if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit == true then
-game.Players.LocalPlayer.Character:FindFirstChild("Humanoid").Sit = false
-end
-end
-wait(0.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Stages.Stage4:FindFirstChild("CloseDavidsDoor").CFrame
-wait(0.7)
-GuiClick = game:GetService("Players").LocalPlayer.PlayerGui.DavidShrineQTE:FindFirstChild("DavidShrineQTE")
-repeat task.wait()
-if GuiClick.Mobile.SpawnArea:FindFirstChild("TapLabel") then
-GuiClick.Mobile.SpawnArea:FindFirstChild("TapLabel").Size = UDim2.new(1001, 0, 1001, 0)
-game:GetService("VirtualUser"):Button1Down(Vector2.new(1, 1))
-game:GetService("VirtualUser"):Button1Up(Vector2.new(1, 1))
-elseif GuiClick:FindFirstChild("PC").Visible == true and GuiClick.PC:FindFirstChild("QuickTimeLabel").Visible == true then
-game:GetService("VirtualInputManager"):SendKeyEvent(true, GuiClick.PC.QuickTimeLabel.Text, false, x)
-end
-until game:GetService("Players").LocalPlayer.PlayerGui.DavidShrineQTE.DavidShrineQTE:FindFirstChild("ScoreLabel").Visible == true and game:GetService("Players").LocalPlayer.PlayerGui.DavidShrineQTE.DavidShrineQTE:FindFirstChild("ScoreLabel").Text == "Score: 150"
-end
-end
+
+local startQTE = tick()
+
+repeat
+	task.wait()
+
+	-- mobile mode
+	if guiClick:FindFirstChild("Mobile")
+		and guiClick.Mobile:FindFirstChild("SpawnArea")
+		and guiClick.Mobile.SpawnArea:FindFirstChild("TapLabel") then
+
+		local tap = guiClick.Mobile.SpawnArea.TapLabel
+
+		tap.Size = UDim2.new(50,0,50,0)
+
+		VirtualUser:Button1Down(Vector2.new(1,1))
+		VirtualUser:Button1Up(Vector2.new(1,1))
+
+	end
+
+	-- pc mode
+	if guiClick:FindFirstChild("PC")
+		and guiClick.PC.Visible == true
+		and guiClick.PC:FindFirstChild("QuickTimeLabel")
+		and guiClick.PC.QuickTimeLabel.Visible == true then
+
+		local key = guiClick.PC.QuickTimeLabel.Text
+
+		pcall(function()
+			VirtualInputManager:SendKeyEvent(true, key, false, game)
+			VirtualInputManager:SendKeyEvent(false, key, false, game)
+		end)
+	end
+
+	local scoreLabel = guiClick:FindFirstChild("ScoreLabel")
+
+	if scoreLabel and scoreLabel.Visible then
+		local score = tonumber(scoreLabel.Text:match("%d+"))
+
+		if score and score >= 150 then
+			break
+		end
+	end
+
+until tick() - startQTE > 60
+
+print("Finished badge script")
+
 end)
+```
+
 elseif game.PlaceId == 117232463555132 then
 Window = Library:CreateWindow({
-    Title = "Map Retro Boss ⚔️",
+    Title = "Retro Boss exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16035,12 +16199,12 @@ end
 end)
 elseif game.PlaceId == 129665246576996 then
 Window = Library:CreateWindow({
-    Title = "Map Egger 🥚",
+    Title = "Egger exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16081,12 +16245,12 @@ end
 end)
 elseif game.PlaceId == 136690395520488 then
 Window = Library:CreateWindow({
-    Title = "Friday the 13th 🔪",
+    Title = "Friday the 13th",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16195,12 +16359,12 @@ end
 end)
 elseif game.PlaceId == 89837553336708 then
 Window = Library:CreateWindow({
-    Title = "Map Plunger 🪠",
+    Title = "Plunger exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16225,12 +16389,12 @@ end
 end)
 elseif game.PlaceId == 75803343514634 then
 Window = Library:CreateWindow({
-    Title = "Shattered Reality ⚔️",
+    Title = "Shattered Reality",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16357,12 +16521,12 @@ end)
 end
 
 Window = Library:CreateWindow({
-    Title = "Boss Mortis ⚔️",
+    Title = "Boss Mortis",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16749,12 +16913,12 @@ end
 })
 elseif game.PlaceId == 106620300132058 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Plate 🍽️",
+    Title = "Plate",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16789,12 +16953,12 @@ end
 end)
 elseif game.PlaceId == 92483185275059 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Maze Pim 🕳️",
+    Title = "Maze with nigger duck",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Halloween | Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "HELLO, WIN? | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16851,12 +17015,12 @@ end
 end)
 elseif game.PlaceId == 103505724406848 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Battles Zombie 🧟",
+    Title = "Battle with niggers",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Halloween | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Footer = "HELLO, WIN? | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16902,12 +17066,12 @@ end
 end)
 elseif game.PlaceId == 101113181694564 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Collect Conker 🍎",
+    Title = "Collect Conker now.",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16983,8 +17147,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "CHRISTMAS | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Footer = "CRIMMM-MM-M-MMAAAAA | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17081,12 +17245,12 @@ if not CoreGui:FindFirstChild("ClickButton") then
 	end
 end
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - SnowBall ☃️",
+    Title = "SnowBall ☃️",
     Center = true,
     AutoShow = true,
     Resizable = true,
 	Footer = "CRIMAAAAAAAA | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17221,12 +17385,12 @@ function InTable(t, value)
 end
 
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - JOB APPLICATION!!! 📦",
+    Title = "JOB APPLICATION!!!",
     Center = true,
     AutoShow = true,
     Resizable = true,
 	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17420,12 +17584,12 @@ MainGroup1:AddButton("Find Glove Sell", function()
 end)
 elseif game.PlaceId == 86045914443715 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Car Key 🚗",
+    Title = "Car Key",
     Center = true,
     AutoShow = true,
     Resizable = true,
 	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17487,12 +17651,12 @@ function CheckGloveFind(j)
 end
 			
 Window = Library:CreateWindow({
-    Title = "Find Glove 🔍",
+    Title = "Find Gloves",
     Center = true,
     AutoShow = true,
     Resizable = true,
 	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
