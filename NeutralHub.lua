@@ -14220,6 +14220,15 @@ for i,v in pairs(game.Players:GetChildren()) do
     if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
         v.Character.HumanoidRootPart.Size = Vector3.new(_G.ReachHitbox,_G.ReachHitbox,_G.ReachHitbox)
         v.Character.HumanoidRootPart.Transparency = 0.75
+		if not v.Character:FindFirstChild("HitboxHighlight") then
+    	local Highlight = Instance.new("Highlight")
+    	Highlight.Name = "HitboxHighlight"
+   		 Highlight.FillTransparency = 1
+   		 Highlight.OutlineTransparency = 0
+  		Highlight.OutlineColor = Color3.new(1,1,1)
+   		 Highlight.DepthMode = Enum.HighlightDepthMode.Occluded
+   		 Highlight.Parent = v.Character
+end
     end
 end
 task.wait()
@@ -14229,20 +14238,21 @@ if _G.HitboxPlayer == false then
         if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
             v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
             v.Character.HumanoidRootPart.Transparency = 1
+			v.Character.HumanoidRootPart.Material = Enum.Material.Plastic
+			if v.Character:FindFirstChild("HitboxHighlight") then
+   			 v.Character.HitboxHighlight:Destroy()
+			end
         end
     end
 end
     end
 })
 
-Combat1Group:AddButton({
-    Text = "Leave Bus Early",
-    Tooltip = "People Vote You",
-    Func = function()
-game.ReplicatedStorage.Remotes.BusJumping:FireServer()
-repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("JumpPrompt")
-game.Players.LocalPlayer.PlayerGui.JumpPrompt:Destroy()
-    end
+}):AddKeyPicker("Hitbox Player", {
+   Default = "Z",
+   Text = "Hitbox Player",
+   Mode = "Toggle",
+   SyncToggleState = true
 })
 
 Combat1Group:AddButton({
@@ -14250,7 +14260,7 @@ Combat1Group:AddButton({
     Func = function()
 for i,v in pairs(game.Players:GetChildren()) do
 	if v:GetRankInGroupAsync(9950771) >= 2 then
-	    game.Players.LocalPlayer:Kick("High Rank Player Detected.".." [ "..v.Name.." ]")
+	    game.Players.LocalPlayer:Kick("High Stupidity Mod Guy Detected.".." [ "..v.Name.." ]")
 		break
     end
 end
@@ -14745,12 +14755,12 @@ Animation(Value)
 })
 elseif game.PlaceId == 14422118326 then
 Window = Library:CreateWindow({
-    Title = "Maze Null ☠️",
+    Title = "Null Maze",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14798,7 +14808,7 @@ Misc1Group:AddToggle("Start Fly", {
 Fly(Value)
 	end
 }):AddKeyPicker("Fly", {
-   Default = "R",
+   Default = "NahShit",
    Text = "Fly",
    Mode = "Toggle",
    SyncToggleState = true
@@ -14825,12 +14835,12 @@ end
 })
 elseif game.PlaceId == 16034567693 then
 Window = Library:CreateWindow({
-    Title = "ADMIN ROOM 💻",
+    Title = "ADMIN ROOM",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14920,12 +14930,12 @@ Toggles["Anti Afk"]:SetValue(true)
 end)
 elseif game.PlaceId == 17290438723 then
 Window = Library:CreateWindow({
-    Title = "Frostbite Map Obby 🎿",
+    Title = "Frostbite Obby exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14951,12 +14961,12 @@ for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
 end)
 elseif game.PlaceId == 18550498098 then
 Window = Library:CreateWindow({
-    Title = "Boss Guide ⚔️",
+    Title = "Guide Bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15390,12 +15400,12 @@ spawn(function()
 end)
 
 Window = Library:CreateWindow({
-    Title = "Lobby OOG 🐕",
+    Title = "Barzil",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15543,12 +15553,12 @@ end
 
 elseif game.PlaceId == 74169485398268 then
 Window = Library:CreateWindow({
-    Title = "Maze Bind 👁️‍🗨️",
+    Title = "Bind Maze",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15580,8 +15590,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15626,12 +15636,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Furniture
 end)
 elseif game.PlaceId == 115782629143468 then
 Window = Library:CreateWindow({
-    Title = "TOH 🪜",
+    Title = "TOH",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15650,12 +15660,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-31, 187
 end)
 elseif game.PlaceId == 92516899071319 then
 Window = Library:CreateWindow({
-    Title = "Map Dreams 💤",
+    Title = "Silly Goober Test",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15690,12 +15700,12 @@ workspace["Unstable Artifact"].Handle.CFrame = game.Players.LocalPlayer.Characte
 end)
 elseif game.PlaceId == 118650724506449 then
 Window = Library:CreateWindow({
-    Title = "Bad Dreams 💤",
+    Title = "Bad Dreams",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15714,12 +15724,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.rooms["ro
 end)
 elseif game.PlaceId == 97220865182663 then
 Window = Library:CreateWindow({
-    Title = "Boss Mouse 🐀",
+    Title = "Mouse Bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15783,12 +15793,12 @@ end
 })
 elseif game.PlaceId == 98726100529621 then
 Window = Library:CreateWindow({
-    Title = "Map Obby Hexa 🔰",
+    Title = "Hexa exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15834,12 +15844,12 @@ end
 end)
 elseif game.PlaceId == 136005148166028 then
 Window = Library:CreateWindow({
-    Title = "Map Designer Roblox 🛠️",
+    Title = "[PATCHED] Designer",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -15939,12 +15949,12 @@ end
 end)
 elseif game.PlaceId == 117232463555132 then
 Window = Library:CreateWindow({
-    Title = "Map Retro Boss ⚔️",
+    Title = "Telamon Bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16001,12 +16011,12 @@ end
 end)
 elseif game.PlaceId == 132277598079047 then
 Window = Library:CreateWindow({
-    Title = "Nightmade Slender 🌑",
+    Title = "Nightmade Slender",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16035,12 +16045,12 @@ end
 end)
 elseif game.PlaceId == 129665246576996 then
 Window = Library:CreateWindow({
-    Title = "Map Egger 🥚",
+    Title = "Eggler exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16081,12 +16091,12 @@ end
 end)
 elseif game.PlaceId == 136690395520488 then
 Window = Library:CreateWindow({
-    Title = "Friday the 13th 🔪",
+    Title = "Friday the 67th",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16195,12 +16205,12 @@ end
 end)
 elseif game.PlaceId == 89837553336708 then
 Window = Library:CreateWindow({
-    Title = "Map Plunger 🪠",
+    Title = "Plunger Obby",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16225,12 +16235,12 @@ end
 end)
 elseif game.PlaceId == 75803343514634 then
 Window = Library:CreateWindow({
-    Title = "Shattered Reality ⚔️",
+    Title = "Shattered Reality",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16357,12 +16367,12 @@ end)
 end
 
 Window = Library:CreateWindow({
-    Title = "Boss Mortis ⚔️",
+    Title = "Evil Barzil",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16749,12 +16759,12 @@ end
 })
 elseif game.PlaceId == 106620300132058 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Plate 🍽️",
+    Title = "Plate",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16789,12 +16799,12 @@ end
 end)
 elseif game.PlaceId == 92483185275059 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Maze Pim 🕳️",
+    Title = "Nigger duck maze",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Halloween | Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "Hello win? | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16851,12 +16861,12 @@ end
 end)
 elseif game.PlaceId == 103505724406848 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Battles Zombie 🧟",
+    Title = "Battle with niggers",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Halloween | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Footer = "Hello win? | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16902,12 +16912,12 @@ end
 end)
 elseif game.PlaceId == 101113181694564 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Collect Conker 🍎",
+    Title = "Collect Conker now.",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -16979,12 +16989,12 @@ if workspace:FindFirstChild("Effects") then
 	workspace:FindFirstChild("Effects"):Destroy()
 end
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Boss Jerry ☃️",
+    Title = "Jerry Bossfight",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "CHRISTMAS | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Footer = "CRI-I-I-I-IIIMAAAAAAAAAAA | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17081,12 +17091,12 @@ if not CoreGui:FindFirstChild("ClickButton") then
 	end
 end
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - SnowBall ☃️",
+    Title = "SnowBall",
     Center = true,
     AutoShow = true,
     Resizable = true,
 	Footer = "CRIMAAAAAAAA | OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17226,7 +17236,7 @@ Window = Library:CreateWindow({
     AutoShow = true,
     Resizable = true,
 	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
-	Icon = 83462777349222,
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17420,12 +17430,12 @@ MainGroup1:AddButton("Find Glove Sell", function()
 end)
 elseif game.PlaceId == 86045914443715 then
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - Car Key 🚗",
+    Title = "Car Keys",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17487,12 +17497,12 @@ function CheckGloveFind(j)
 end
 			
 Window = Library:CreateWindow({
-    Title = "Find Glove 🔍",
+    Title = "Find Gloves exp",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
