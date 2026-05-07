@@ -13655,19 +13655,13 @@ Tabs = {
 local Badge1 = Tabs.Tab:AddLeftGroupbox("Misc")
 
 Badge1:AddButton("Get Elude + Counter", function()
-Time = 121
 wait(0.4)
 spawn(function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.CounterLever.Main.CFrame
 game.Workspace.CounterLever.ClickDetector.MouseClick:Connect(function()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
-wait(0.2)
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-for i = 1,Time do
-Time = Time - 1
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wait",Text = "You wait time [ "..Time.." ] receive.",Icon = "rbxassetid://7733658504",Duration = 1})
-wait(1)
-end
+wait(121)
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
 for i, v in pairs(workspace.Maze:GetChildren()) do
 if v.Name == "Part" and v:IsA("MeshPart") then
