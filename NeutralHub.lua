@@ -13636,7 +13636,7 @@ table.insert(_G.ConnectFun, game.Workspace.NoChanged.Changed:Connect(function()
 end))
 elseif game.PlaceId == 11828384869 then
 Window = Library:CreateWindow({
-    Title = "Maze 👁️",
+    Title = "Maze",
     Center = true,
     AutoShow = true,
     Resizable = true,
@@ -13665,12 +13665,12 @@ wait(0.2)
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
 for i = 1,Time do
 Time = Time - 1
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "You wait time [ "..Time.." ] receive.",Icon = "rbxassetid://7733658504",Duration = 1})
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Wait",Text = "You wait time [ "..Time.." ] receive.",Icon = "rbxassetid://7733658504",Duration = 1})
 wait(1)
 end
 game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
 for i, v in pairs(workspace.Maze:GetChildren()) do
-if v.Name == "Part" and v:FindFirstChild("A0") and v:FindFirstChild("ClickDetector") then
+if v.Name == "Part" and v:IsA("MeshPart") then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,-20,0)
 v.ClickDetector.MouseClick:Connect(function()
 game.Workspace.Ruins.Elude.Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
