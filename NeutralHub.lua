@@ -43,6 +43,24 @@ local function Create(Name, Properties, Children)
     return Object
 end
 local TweenService = game:GetService("TweenService")
+function Notification(Message, Time)
+	pcall(function()
+		if _G.ChooseNotify == "Obsidian" and Library and type(Library.Notify) == "function" then
+			Library:Notify(Message, Time or 5)
+		else
+			game:GetService("StarterGui"):SetCore("SendNotification", {Title = "Notification", Text = Message, Icon = "rbxassetid://7733658504", Duration = Time or 5})
+		end
+	end)
+	if _G.NotificationSound then
+		pcall(function()
+			local sound = Instance.new("Sound", workspace)
+			sound.SoundId = "rbxassetid://4590662766"
+			sound.Volume = _G.VolumeTime or 2
+			sound.PlayOnRemove = true
+			sound:Destroy()
+		end)
+	end
+end
 if game.CoreGui:FindFirstChild("Cooldown Script") == nil then
 local gui = Create("ScreenGui", {Name = "Cooldown Script", IgnoreGuiInset = true, Parent = game.CoreGui})
 local ImageLabel = Create("ImageLabel", {
@@ -687,7 +705,7 @@ if hookmetamethod and getnamecallmethod then
 					args[2] = (EquipGlove == "Mace" and 200 or true)
 					return getgenv().HookFun(method, unpack(args))
 				end
-				if tostring(method) == "GeneralAbility" and args[1] == "antispam" and getgenb().AntiSpamBypass then
+				if tostring(method) == "GeneralAbility" and args[1] == "antispam" and getgenv().AntiSpamBypass then
 					return
 				end
 			elseif methodcall == "InvokeServer" then
@@ -1187,20 +1205,7 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/A
 local Options = Library.Options
 local Toggles = Library.Toggles
 
-function Notification(Message, Time)
-if _G.ChooseNotify == "Obsidian" then
-Library:Notify(Message, Time or 5)
-elseif _G.ChooseNotify == "Roblox" then
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = Message,Icon = "rbxassetid://7733658504",Duration = Time or 5})
-end
-if _G.NotificationSound then
-        local sound = Instance.new("Sound", workspace)
-            sound.SoundId = "rbxassetid://4590662766"
-            sound.Volume = _G.VolumeTime or 2
-            sound.PlayOnRemove = true
-            sound:Destroy()
-        end
-    end
+-- Notification function defined earlier (safe noop here)
 
 Library:SetDPIScale(100)
 if MobileOn then
@@ -2011,7 +2016,7 @@ if hookmetamethod then
 	    Text = "Anti Spam Bypass (Chainsaw)",
 	    Default = false,
 	    Callback = function(Value)
-	getgenb().AntiSpamBypass = Value
+		getgenv().AntiSpamBypass = Value
 	    end
 	})
 end
