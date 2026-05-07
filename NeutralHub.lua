@@ -16099,7 +16099,6 @@ until tick() - startQTE > 60
 print("Finished badge script")
 
 end)
-```
 
 elseif game.PlaceId == 117232463555132 then
 Window = Library:CreateWindow({
@@ -16165,12 +16164,12 @@ end
 end)
 elseif game.PlaceId == 132277598079047 then
 Window = Library:CreateWindow({
-    Title = "Nightmade Slender 🌑",
+    Title = "Nightmade Slender",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -17584,11 +17583,11 @@ MainGroup1:AddButton("Find Glove Sell", function()
 end)
 elseif game.PlaceId == 86045914443715 then
 Window = Library:CreateWindow({
-    Title = "Car Key",
+    Title = "Car Keys",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
@@ -17655,7 +17654,7 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
 	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
