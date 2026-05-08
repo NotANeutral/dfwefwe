@@ -14963,9 +14963,9 @@ Misc1Group:AddButton("get 4 lotuses", function()
     hrp.Anchored = true
     hrp.CFrame = lotus.CFrame
 	lotus.ClickDetector.MouseClick:Connect(function()
-	hrp.CFrame = workspace.Lotus1_Red.Lotus.Primary.CFrame
+	hrp.CFrame = workspace.Lotus1_Red.Lotus.Primary.CFrame * CFrame.new(3, 0, 0)
 	workspace.Lotus1_Red.Lotus.Primary.ClickDetector.MouseClick:Connect(function()
-	hrp.CFrame = workspace.Lotus4_Pink.Primary.CFrame
+	hrp.CFrame = workspace.Lotus4_Pink.Primary.CFrame * CFrame.new(3, 0, 0)
 end)
 	end)	
 end)
