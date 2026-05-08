@@ -3311,7 +3311,7 @@ end
 })
 
 Badge1Group:AddButton({
-    Text = "Get Counter + Elude",
+    Text = "Tp Nigger Pim maze",
     Func = function()
         game:GetService("TeleportService"):Teleport(11828384869)
     end
