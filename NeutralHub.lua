@@ -14952,14 +14952,22 @@ Misc1Group:AddButton("get 4 lotuses", function()
     local player = game.Players.LocalPlayer
     local char = player.Character or player.CharacterAdded:Wait()
     local hrp = char:WaitForChild("HumanoidRootPart")
-
+	
     local lotus = workspace:WaitForChild("Lotus3_Blue"):WaitForChild("Lotus"):WaitForChild("Primary")
+
+	
 
     lotus.CanQuery = true
     lotus.Transparency = 0
-
+	
     hrp.Anchored = true
     hrp.CFrame = lotus.CFrame
+	lotus.ClickDetector.Activated:Connect(function()
+	hrp.CFrame = workspace.Lotus1_Red.Lotus.Primary.CFrame
+	workspace.Lotus1_Red.Lotus.Primary.ClickDetector.Activated:Connect(function()
+	hrp.CFrame = workspace.Lotus4_Pink.Primary.CFrame
+end)
+	end)	
 end)
 
 elseif game.PlaceId == 18550498098 then
