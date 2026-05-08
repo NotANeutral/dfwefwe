@@ -13613,16 +13613,13 @@ Tabs = {
 local Badge1 = Tabs.Tab:AddLeftGroupbox("Misc")
 
 Badge1:AddButton("Get Elude", function()
-    wait(0.4)
-
     spawn(function()
         game.Workspace.Ruins.Elude.Glove.CFrame =
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     end)
 end)
 
-Badge1:AddButton("Get Elude + Counter", function()
-
+Badge1:AddButton("Get Counter", function()
     local player = game.Players.LocalPlayer
     local char = player.Character
 
@@ -13646,7 +13643,7 @@ Badge1:AddButton("Get Elude + Counter", function()
 
     repeat task.wait() until clicked
 
-    Notification("Wait 121 secs to get the glove", _G.TimeNotify)
+    Notification("Wait 126 secs to get the glove", _G.TimeNotify)
     local platform = Instance.new("Part")
     platform.Size = Vector3.new(20, 1, 20)
     platform.Anchored = true
@@ -13656,13 +13653,14 @@ Badge1:AddButton("Get Elude + Counter", function()
     platform.Parent = workspace
     hrp.CFrame = CFrame.new(0, 100, 0)
 
-    wait(121)
+    wait(126)
     platform:Destroy()
     for _, v in pairs(workspace.Maze:GetChildren()) do
         if v.Name == "Part"
         and v:IsA("MeshPart")
         and v:FindFirstChild("A0")
         and v:FindFirstChild("ClickDetector") then
+			v.CanCollide = false
             hrp.CFrame = v.CFrame
             wait(0.5)
             local clicked2 = false
@@ -13675,8 +13673,6 @@ Badge1:AddButton("Get Elude + Counter", function()
             end)
             repeat task.wait() until clicked2
             wait(1)
-            workspace.Ruins.Elude.Glove.CFrame = hrp.CFrame
-
             break
         end
     end
