@@ -3312,8 +3312,6 @@ end
 
 Badge1Group:AddButton({
     Text = "Get Counter + Elude",
-    Func = function()
-local teleportFunc = queueonteleport or queue_on_teleport
 game:GetService("TeleportService"):Teleport(11828384869)
 })
 
