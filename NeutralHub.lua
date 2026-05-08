@@ -13641,6 +13641,8 @@ Window = Library:CreateWindow({
     AutoShow = true,
     Resizable = true,
     AutoLock = true,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
     ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -13653,6 +13655,12 @@ Tabs = {
 }
 
 local Badge1 = Tabs.Tab:AddLeftGroupbox("Misc")
+
+Badge1:AddButton("Get Elude", function()
+wait(0.4)
+spawn(function()
+game.Workspace.Ruins.Elude.Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end)
 
 Badge1:AddButton("Get Elude + Counter", function()
 wait(0.4)
@@ -13695,12 +13703,12 @@ end
 end)
 elseif game.PlaceId == 13833961666 then
 Window = Library:CreateWindow({
-    Title = "Boss Bob 💥",
+    Title = "Eternal bob",
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
