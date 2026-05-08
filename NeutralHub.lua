@@ -14948,7 +14948,7 @@ elseif game.PlaceId == 93981091811742 then
     }
     local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
 
-Misc1Group:AddButton("get 4 lotuses", function()
+Misc1Group:AddButton("get all 5 lotuses", function()
     local player = game.Players.LocalPlayer
     local char = player.Character or player.CharacterAdded:Wait()
     local hrp = char:WaitForChild("HumanoidRootPart")
@@ -14960,6 +14960,8 @@ Misc1Group:AddButton("get 4 lotuses", function()
 
     lotus.CanQuery = true
     lotus.Transparency = 0
+
+	Notification("click on lotus near you to get the next one (i couldn't do the last one puzzle automation)", 7)
 	
     hrp.Anchored = true
     hrp.CFrame = lotus.CFrame * CFrame.new(3, 0, 0)
