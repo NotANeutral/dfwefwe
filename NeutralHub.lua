@@ -13633,41 +13633,29 @@ Badge1:AddButton("Get Elude + Counter", function()
     local hrp = char.HumanoidRootPart
 
     wait(0.4)
-
     -- Телепорт до ричага
     hrp.CFrame = workspace.CounterLever.Main.CFrame
-
     wait(3.5)
-
     -- Натискання ричага
     fireclickdetector(workspace.CounterLever.ClickDetector)
-
     -- Ховаємо гравця
     hrp.CFrame = CFrame.new(0,100,0)
     hrp.Anchored = true
-
+	workspace.Pim:Destroy()
     wait(121)
-
     hrp.Anchored = false
-
     -- Шукаємо правильний Part
     for _, v in pairs(workspace.Maze:GetChildren()) do
         if v.Name == "Part"
         and v:IsA("MeshPart")
         and v:FindFirstChild("A0")
         and v:FindFirstChild("ClickDetector") then
-
             hrp.CFrame = v.CFrame * CFrame.new(0,-20,0)
-
             wait(0.5)
-
             fireclickdetector(v.ClickDetector)
-
             wait(1)
-
-            -- Забираємо glove
+            -- Забиаємо glove
             workspace.Ruins.Elude.Glove.CFrame = hrp.CFrame
-
             break
         end
     end
