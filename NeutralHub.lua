@@ -3312,7 +3312,9 @@ end
 
 Badge1Group:AddButton({
     Text = "Get Counter + Elude",
-game:GetService("TeleportService"):Teleport(11828384869)
+    Callback = function()
+        game:GetService("TeleportService"):Teleport(11828384869)
+    end
 })
 
 Badge1Group:AddButton({
