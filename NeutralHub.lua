@@ -14951,7 +14951,7 @@ elseif game.PlaceId == 93981091811742 then
     Misc1Group:AddButton("get 4 lotuses", function()
 	    workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
 
-    local lotusparts = workspace.Lotus3_Blue:GetDescendants()
+    local lotusparts = workspace.Lotus3_Blue:GetChildren()
 
     for _, i in pairs(lotusparts) do
         if i:IsA("MeshPart") then
