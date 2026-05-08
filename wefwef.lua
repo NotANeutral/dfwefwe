@@ -223,6 +223,7 @@ local Templates = {
         FontFace = "Font",
         RichText = true,
         TextColor3 = "FontColor",
+		TextScaled = true,
     },
     TextBox = {
         BorderSizePixel = 0,
