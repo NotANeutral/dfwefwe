@@ -14946,20 +14946,18 @@ elseif game.PlaceId == 93981091811742 then
         Tab = Window:AddTab("Misc", "rbxassetid://4370318685"),
         ["UI Settings"] = Window:AddTab("UI Settings", "rbxassetid://7733955511")
     }
-	workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
-
-	local lotusparts = workspace.Lotus3_Blue:GetChildren()
-
-	for _, i in pairs(lotusparts) do
-	    if i:IsA("MeshPart") then
-	        i.Transparency = 0
-	    end
-	end
-
     local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
-	
+
     Misc1Group:AddButton("get 4 lotuses", function()
-	
+	    workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
+
+    local lotusparts = workspace.Lotus3_Blue:GetDescendants()
+
+    for _, i in pairs(lotusparts) do
+        if i:IsA("MeshPart") then
+            i.Transparency = 1
+        end
+    end
     end)
 end
 
