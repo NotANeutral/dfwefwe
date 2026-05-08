@@ -13650,7 +13650,7 @@ Badge1:AddButton("Get Counter", function()
 
     repeat task.wait() until clicked
 
-    Notification("Wait 126 secs to get the glove", _G.TimeNotify)
+    Notification("Wait 126 secs to get the glove", 4)
     local platform = Instance.new("Part")
     platform.Size = Vector3.new(20, 1, 20)
     platform.Anchored = true
@@ -14078,8 +14078,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
-	Footer = "Omega X Article Hub Version: 1.0.5",
-	Icon = 83462777349222,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
 	ShowCustomCursor = true,
     NotifySide = "Right",
     TabPadding = 2,
@@ -14114,88 +14114,17 @@ task.wait(0.3)
 end
     end
 }):AddKeyPicker("SlapAura", {
-   Default = "na bro dont use it",
+   Default = "na bro",
    Text = "Slap Aura",
    Mode = "Toggle",
    SyncToggleState = true
-})
-
-_G.GloveExtendReach = 5
-Combat1Group:AddSlider("Extend Glove", {
-    Text = "Extend Glove",
-    Default = 5,
-    Min = 2,
-    Max = 20,
-    Rounding = 0,
-    Compact = true,
-    Callback = function(Value)
-_G.GloveExtendReach = Value
-    end
-})
-
- Combat1Group:AddDropdown("Extend Option", {
-    Text = "Extend Option",
-    Values = {"Meat Stick","Pancake","Growth","North Korea Wall","Slight Extend"},
-    Default = "",
-    Multi = false,
-    Callback = function(Value)
-GloveExtendOption = Value
-    end
-})
-
- Combat1Group:AddToggle("Extend Glove", {
-    Text = "Extend Glove",
-    Default = false, 
-    Callback = function(Value) 
-_G.GloveExtendGet = Value
-if _G.GloveExtendGet == false then
-	local function GloveOff(v)
-		if v:IsA("Tool") and v:FindFirstChild("Glove") then
-	        v:FindFirstChild("Glove").Size = Vector3.new(2.5, 2.5, 1.7)
-	        v:FindFirstChild("Glove").Transparency = 0
-	    end
-	end
-	for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-		GloveOff(v)
-	end
-	for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-		GloveOff(v)
-	end
-end
-while _G.GloveExtendGet do
-local function GloveReachOn(v)
-	if v.ClassName == "Tool" and v:FindFirstChild("Glove") then
-        if GloveExtendOption == "Meat Stick" then
-	        GloveReachTo = Vector3.new(0, _G.GloveExtendReach, 2)
-        elseif GloveExtendOption == "Pancake" then
-	        GloveReachTo = Vector3.new(0, _G.GloveExtendReach, _G.GloveExtendReach)
-        elseif GloveExtendOption == "Growth" then
-	        GloveReachTo = Vector3.new(_G.GloveExtendReach,_G.GloveExtendReach,_G.GloveExtendReach)
-        elseif GloveExtendOption == "North Korea Wall" then
-	        GloveReachTo = Vector3.new(_G.GloveExtendReach,0,_G.GloveExtendReach)
-        elseif GloveExtendOption == "Slight Extend" then
-	        GloveReachTo = Vector3.new(3, 3, 3.7)
-		end
-        v:FindFirstChild("Glove").Size = GloveReachTo or Vector3.new(2.5, 2.5, 1.7)
-        v:FindFirstChild("Glove").Transparency = 0.5
-    end
-end
-for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-	GloveReachOn(v)
-end
-for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-	GloveReachOn(v)
-end
-task.wait()
-end
-    end
 })
 
 _G.ReachHitbox = 10
 Combat1Group:AddSlider("Reach HitBox", {
     Text = "Reach Hitbox",
     Default = 10,
-    Min = 10,
+    Min = 5,
     Max = 25,
     Rounding = 0,
     Compact = true,
@@ -14207,27 +14136,53 @@ _G.ReachHitbox = Value
 Combat1Group:AddToggle("Hitbox Player", {
     Text = "Hitbox Player",
     Default = false, 
-    Callback = function(Value) 
+    Callback = function(Value)
+
 _G.HitboxPlayer = Value
-while _G.HitboxPlayer do
-for i,v in pairs(game.Players:GetChildren()) do
-    if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
-        v.Character.HumanoidRootPart.Size = Vector3.new(_G.ReachHitbox,_G.ReachHitbox,_G.ReachHitbox)
-        v.Character.HumanoidRootPart.Transparency = 0.75
+
+task.spawn(function()
+    while _G.HitboxPlayer do
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Character then
+                local hrp = v.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    hrp.Size = Vector3.new(_G.ReachHitbox or 5, _G.ReachHitbox or 5, _G.ReachHitbox or 5)
+                    hrp.Transparency = 0.75
+
+                    if not v.Character:FindFirstChild("HitboxHighlight") then
+                        local outline = Instance.new("Highlight")
+                        outline.Name = "HitboxHighlight"
+                        outline.FillTransparency = 1
+                        outline.OutlineTransparency = 0.6
+                        outline.Parent = v.Character
+                    end
+                end
+            end
+        end
+        task.wait(0.2)
     end
-end
-task.wait()
-end
-if _G.HitboxPlayer == false then
-	for i,v in pairs(game.Players:GetChildren()) do
-        if v ~= game.Players.LocalPlayer and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
-            v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-            v.Character.HumanoidRootPart.Transparency = 1
-			v.Character.HumanoidRootPart.Material = Enum.Material.Plastic
+
+    -- reset
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer and v.Character then
+            local hrp = v.Character:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                hrp.Size = Vector3.new(2, 2, 1)
+                hrp.Transparency = 1
+            end
+
+            local hl = v.Character:FindFirstChild("HitboxHighlight")
+            if hl then hl:Destroy() end
         end
     end
-end
+end)
+
     end
+}):AddKeyPicker("Hitbox", {
+   Default = "z",
+   Text = "Extend Hitbox",
+   Mode = "Toggle",
+   SyncToggleState = true
 })
 
 Combat1Group:AddButton({
