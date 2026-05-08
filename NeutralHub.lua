@@ -14960,9 +14960,6 @@ Misc1Group:AddButton("get 4 lotuses", function()
 
     hrp.Anchored = true
     hrp.CFrame = lotus.CFrame
-
-    task.wait(0.2)
-    hrp.Anchored = false
 end)
 
 elseif game.PlaceId == 18550498098 then
