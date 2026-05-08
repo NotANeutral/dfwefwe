@@ -13640,6 +13640,8 @@ Window = Library:CreateWindow({
     Center = true,
     AutoShow = true,
     Resizable = true,
+	Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+	Icon = 113431335912495,
     AutoLock = true,
     ShowCustomCursor = true,
     NotifySide = "Right",
@@ -13664,33 +13666,55 @@ Badge1:AddButton("Get Elude", function()
 end)
 
 Badge1:AddButton("Get Elude + Counter", function()
-wait(0.4)
-spawn(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.CounterLever.Main.CFrame
-game.Workspace.CounterLever.ClickDetector.MouseClick:Connect(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-wait(121)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-for i, v in pairs(workspace.Maze:GetChildren()) do
-if v.Name == "Part" and v:IsA("MeshPart") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,-20,0)
-v.ClickDetector.MouseClick:Connect(function()
-game.Workspace.Ruins.Elude.Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-end)
-end
-end
-end)
-end)
-wait(3.5)
-fireclickdetector(game.Workspace.CounterLever.ClickDetector)
-repeat task.wait() until Time == 0
-wait(2)
-for i, v in pairs(workspace.Maze:GetChildren()) do
-if v.Name == "Part" and v:FindFirstChild("A0") and v:FindFirstChild("ClickDetector") then
-fireclickdetector(v.ClickDetector)
-end
-end
+
+    local player = game.Players.LocalPlayer
+    local char = player.Character
+
+    if not char or not char:FindFirstChild("HumanoidRootPart") then
+        return
+    end
+
+    local hrp = char.HumanoidRootPart
+
+    wait(0.4)
+
+    -- Телепорт до ричага
+    hrp.CFrame = workspace.CounterLever.Main.CFrame
+
+    wait(3.5)
+
+    -- Натискання ричага
+    fireclickdetector(workspace.CounterLever.ClickDetector)
+
+    -- Ховаємо гравця
+    hrp.CFrame = CFrame.new(0,100,0)
+    hrp.Anchored = true
+
+    wait(121)
+
+    hrp.Anchored = false
+
+    -- Шукаємо правильний Part
+    for _, v in pairs(workspace.Maze:GetChildren()) do
+        if v.Name == "Part"
+        and v:IsA("MeshPart")
+        and v:FindFirstChild("A0")
+        and v:FindFirstChild("ClickDetector") then
+
+            hrp.CFrame = v.CFrame * CFrame.new(0,-20,0)
+
+            wait(0.5)
+
+            fireclickdetector(v.ClickDetector)
+
+            wait(1)
+
+            -- Забираємо glove
+            workspace.Ruins.Elude.Glove.CFrame = hrp.CFrame
+
+            break
+        end
+    end
 end)
 
 Badge1:AddButton("Teleport Alchemist Plushie", function()
