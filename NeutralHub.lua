@@ -14952,6 +14952,7 @@ Misc1Group:AddButton("get 4 lotuses", function()
     local player = game.Players.LocalPlayer
     local char = player.Character or player.CharacterAdded:Wait()
     local hrp = char:WaitForChild("HumanoidRootPart")
+	local starterpos = hrp.CFrame
 	
     local lotus = workspace:WaitForChild("Lotus3_Blue"):WaitForChild("Lotus"):WaitForChild("Primary")
 
@@ -14961,11 +14962,19 @@ Misc1Group:AddButton("get 4 lotuses", function()
     lotus.Transparency = 0
 	
     hrp.Anchored = true
-    hrp.CFrame = lotus.CFrame
+    hrp.CFrame = lotus.CFrame * CFrame.new(3, 0, 0)
 	lotus.ClickDetector.MouseClick:Connect(function()
 	hrp.CFrame = workspace.Lotus1_Red.Lotus.Primary.CFrame * CFrame.new(3, 0, 0)
 	workspace.Lotus1_Red.Lotus.Primary.ClickDetector.MouseClick:Connect(function()
 	hrp.CFrame = workspace.Lotus4_Pink.Primary.CFrame * CFrame.new(3, 0, 0)
+	workspace.Lotus4_Pink.Lotus.Primary.ClickDetector.MouseClick:Connect(function()
+	hrp.CFrame = workspace.Lotus5_White.Primary.CFrame * CFrame.new(3, 0, 0)
+	workspace.Lotus5_White.Lotus.Primary.ClickDetector.MouseClick:Connect(function()
+	hrp.CFrame = workspace.Lotus2.Net.Handle.CFrame
+	task.wait(0.3)
+	hrp.Anchored = false
+end)
+	end)
 end)
 	end)	
 end)
