@@ -600,7 +600,7 @@ if not loadingNotify then
 end
 end
 _G.TimeNotify = 5
-if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 or game.PlaceId == 127174121130060 then
+if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 then
 if game.ReplicatedStorage:FindFirstChild("AdminGUI") then
 	game.ReplicatedStorage.AdminGUI:Destroy()
 end
@@ -1206,7 +1206,7 @@ Library:SetDPIScale(100)
 if MobileOn then
 	Library:SetDPIScale(85)
 end
-if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 then
+if game.PlaceId == 6403373529 or game.PlaceId == 9015014224 or game.PlaceId == 11520107397 or game.PlaceId == 124596094333302 or game.PlaceId == 127174121130060 then
 Window = Library:CreateWindow({
     Title = "Slap Battles",
     Center = true,
