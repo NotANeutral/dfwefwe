@@ -13661,7 +13661,7 @@ Badge1:AddButton("Get Counter", function()
         and v:FindFirstChild("A0")
         and v:FindFirstChild("ClickDetector") then
 			v.CanCollide = false
-            hrp.CFrame = v.CFrame
+            hrp.CFrame = v.CFrame * CFrame.new(3, 2, 0)
             wait(0.5)
             local clicked2 = false
             local connection2
