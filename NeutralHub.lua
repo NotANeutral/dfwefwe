@@ -3368,9 +3368,12 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Lobb
     end
 })
 
-Badge1Group:AddButton("Goto Lotus exp", function()
-    game:GetService("TeleportService"):Teleport(93981091811742)
-end)
+Badge1Group:AddButton({
+    Text = "Tp Lotus Place",
+    Func = function()
+        game:GetService("TeleportService"):Teleport(11828384869)
+    end
+})
 
 Badge1Group:AddButton({
     Text = "Get Badge OOG",
