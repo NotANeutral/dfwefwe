@@ -13657,9 +13657,12 @@ Tabs = {
 local Badge1 = Tabs.Tab:AddLeftGroupbox("Misc")
 
 Badge1:AddButton("Get Elude", function()
-wait(0.4)
-spawn(function()
-game.Workspace.Ruins.Elude.Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    wait(0.4)
+
+    spawn(function()
+        game.Workspace.Ruins.Elude.Glove.CFrame =
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    end)
 end)
 
 Badge1:AddButton("Get Elude + Counter", function()
