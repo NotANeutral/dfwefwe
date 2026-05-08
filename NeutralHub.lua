@@ -14951,6 +14951,8 @@ elseif game.PlaceId == 93981091811742 then
     Misc1Group:AddButton("get 4 lotuses", function()
 	    workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
 		workspace.Lotus3_Blue.Lotus.Primary.Transparency = 0
+		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lotus3_Blue.Lotus.Primary.CFrame
     end)
 
 elseif game.PlaceId == 18550498098 then
