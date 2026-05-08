@@ -13633,11 +13633,7 @@ Badge1:AddButton("Get Elude + Counter", function()
     local hrp = char.HumanoidRootPart
 
     wait(0.4)
-
-    -- Телепорт до ричага
     hrp.CFrame = workspace.CounterLever.Main.CFrame
-
-    -- Чекаємо поки гравець сам нажме
     local clicked = false
 
     local connection
@@ -13651,8 +13647,6 @@ Badge1:AddButton("Get Elude + Counter", function()
     repeat task.wait() until clicked
 
     Notification("Wait 121 secs to get the glove", _G.TimeNotify)
-
-    -- Створюємо платформу
     local platform = Instance.new("Part")
     platform.Size = Vector3.new(20, 1, 20)
     platform.Anchored = true
@@ -13660,29 +13654,18 @@ Badge1:AddButton("Get Elude + Counter", function()
     platform.CanCollide = true
     platform.Position = Vector3.new(0, 95, 0)
     platform.Parent = workspace
-
-    -- Телепорт на платформу
     hrp.CFrame = CFrame.new(0, 100, 0)
 
     wait(121)
-
-    -- Видаляємо платформу
     platform:Destroy()
-
-    -- Шукаємо потрібний Part
     for _, v in pairs(workspace.Maze:GetChildren()) do
         if v.Name == "Part"
         and v:IsA("MeshPart")
         and v:FindFirstChild("A0")
         and v:FindFirstChild("ClickDetector") then
-
-            hrp.CFrame = v.CFrame * CFrame.new(0,-20,0)
-
+            hrp.CFrame = v.CFrame
             wait(0.5)
-
-            -- Чекаємо поки гравець сам нажме
             local clicked2 = false
-
             local connection2
             connection2 = v.ClickDetector.MouseClick:Connect(function(plr)
                 if plr == player then
@@ -13690,12 +13673,8 @@ Badge1:AddButton("Get Elude + Counter", function()
                     connection2:Disconnect()
                 end
             end)
-
             repeat task.wait() until clicked2
-
             wait(1)
-
-            -- Забираємо glove
             workspace.Ruins.Elude.Glove.CFrame = hrp.CFrame
 
             break
