@@ -1382,7 +1382,7 @@ function Library:MakeOutline(Frame: GuiObject, Corner: number?, ZIndex: number?)
 
     if Corner and Corner > 0 then
         New("UICorner", {
-            CornerRadius = UDim.new(0, Corner + 9),
+            CornerRadius = UDim.new(0, Corner + 1),
             Parent = Holder,
         })
         New("UICorner", {
@@ -1394,7 +1394,6 @@ function Library:MakeOutline(Frame: GuiObject, Corner: number?, ZIndex: number?)
     return Holder
 end
 
-	
 function Library:AddDraggableButton(Text: string, Func)
     local Table = {}
 
