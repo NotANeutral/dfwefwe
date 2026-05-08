@@ -14955,7 +14955,7 @@ elseif game.PlaceId == 93981091811742 then
 
     for _, i in pairs(lotusparts) do
         if i:IsA("MeshPart") then
-            i.Transparency = 1
+            i.Transparency = 0
         end
     end
     end)
