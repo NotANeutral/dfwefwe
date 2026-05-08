@@ -14959,7 +14959,6 @@ elseif game.PlaceId == 93981091811742 then
         end
     end
     end)
-end
 
 elseif game.PlaceId == 18550498098 then
 Window = Library:CreateWindow({
