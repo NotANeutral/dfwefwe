@@ -14948,12 +14948,22 @@ elseif game.PlaceId == 93981091811742 then
     }
     local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
 
-    Misc1Group:AddButton("get 4 lotuses", function()
-	    workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
-		workspace.Lotus3_Blue.Lotus.Primary.Transparency = 0
-		game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.Lotus3_Blue.Lotus.Primary.CFrame
-    end)
+Misc1Group:AddButton("get 4 lotuses", function()
+    local player = game.Players.LocalPlayer
+    local char = player.Character or player.CharacterAdded:Wait()
+    local hrp = char:WaitForChild("HumanoidRootPart")
+
+    local lotus = workspace:WaitForChild("Lotus3_Blue"):WaitForChild("Lotus"):WaitForChild("Primary")
+
+    lotus.CanQuery = true
+    lotus.Transparency = 0
+
+    hrp.Anchored = true
+    hrp.CFrame = lotus.CFrame
+
+    task.wait(0.2)
+    hrp.Anchored = false
+end)
 
 elseif game.PlaceId == 18550498098 then
 Window = Library:CreateWindow({
