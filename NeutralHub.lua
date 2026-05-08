@@ -14927,6 +14927,42 @@ for i,v in ipairs(game:GetService("Workspace"):GetDescendants()) do
             end
         end
 end)
+
+elseif game.PlaceId == 17290438723 then
+    Window = Library:CreateWindow({
+        Title = "Spring Lotus exp",
+        Center = true,
+        AutoShow = true,
+        Resizable = true,
+        Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+        Icon = 113431335912495,
+        ShowCustomCursor = true,
+        NotifySide = "Right",
+        TabPadding = 2,
+        MenuFadeTime = 0
+    })
+
+    Tabs = {
+        Tab = Window:AddTab("Misc", "rbxassetid://4370318685"),
+        ["UI Settings"] = Window:AddTab("UI Settings", "rbxassetid://7733955511")
+    }
+	workspace.Lotus3_Blue.Lotus.Primary.CanQuery = true
+
+	local lotusparts = workspace.Lotus3_Blue:GetChildren()
+
+	for _, i in pairs(lotusparts) do
+	    if i:IsA("MeshPart") then
+	        i.Transparency = 0
+	    end
+	end
+
+    local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
+	
+    Misc1Group:AddButton("get 4 lotuses", function()
+	
+    end)
+end
+
 elseif game.PlaceId == 18550498098 then
 Window = Library:CreateWindow({
     Title = "Guide Bossfight",
