@@ -14179,7 +14179,7 @@ end)
 
     end
 }):AddKeyPicker("Hitbox", {
-   Default = "z",
+   Default = "Z",
    Text = "Extend Hitbox",
    Mode = "Toggle",
    SyncToggleState = true
