@@ -13622,29 +13622,31 @@ Badge1:AddButton("Get Elude", function()
 end)
 
 Badge1:AddButton("Get Elude + Counter", function()
-
     local player = game.Players.LocalPlayer
     local char = player.Character
-
     if not char or not char:FindFirstChild("HumanoidRootPart") then
         return
     end
-
     local hrp = char.HumanoidRootPart
-
     wait(0.4)
-    -- Телепорт до ричага
     hrp.CFrame = workspace.CounterLever.Main.CFrame
-    wait(3.5)
-    -- Натискання ричага
-    fireclickdetector(workspace.CounterLever.ClickDetector)
-    -- Ховаємо гравця
+    local clicked = false
+    local connection
+    connection = workspace.CounterLever.ClickDetector.MouseClick:Connect(function(plr)
+        if plr == player then
+            clicked = true
+            connection:Disconnect()
+        end
+    end)
+    repeat task.wait() until clicked
+    if workspace:FindFirstChild("Pim") then
+        workspace.Pim:Destroy()
+		Notification("Wait 121 secs to get the glove", _G.TimeNotify)
+    end
     hrp.CFrame = CFrame.new(0,100,0)
     hrp.Anchored = true
-	workspace.Pim:Destroy()
     wait(121)
     hrp.Anchored = false
-    -- Шукаємо правильний Part
     for _, v in pairs(workspace.Maze:GetChildren()) do
         if v.Name == "Part"
         and v:IsA("MeshPart")
@@ -13652,10 +13654,22 @@ Badge1:AddButton("Get Elude + Counter", function()
         and v:FindFirstChild("ClickDetector") then
             hrp.CFrame = v.CFrame * CFrame.new(0,-20,0)
             wait(0.5)
-            fireclickdetector(v.ClickDetector)
+            local clicked2 = false
+            local connection2
+            connection2 = v.ClickDetector.MouseClick:Connect(function(plr)
+                if plr == player then
+                    clicked2 = true
+                    connection2:Disconnect()
+                end
+            end)
+
+            repeat task.wait() until clicked2
+
             wait(1)
-            -- Забиаємо glove
+
+            -- Забираємо glove
             workspace.Ruins.Elude.Glove.CFrame = hrp.CFrame
+
             break
         end
     end
