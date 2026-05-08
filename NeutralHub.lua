@@ -3314,51 +3314,7 @@ Badge1Group:AddButton({
     Text = "Get Counter + Elude",
     Func = function()
 local teleportFunc = queueonteleport or queue_on_teleport
-if teleportFunc then
-    teleportFunc([[
-        if not game:IsLoaded() then
-            game.Loaded:Wait()
-        end
-        repeat wait() until game.Players.LocalPlayer
-        wait(3)
-Time = 121
-wait(0.4)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = workspace.CounterLever.Main.CFrame
-game.Workspace.CounterLever.ClickDetector.MouseClick:Connect(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0,100,0)
-wait(0.2)
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
-for i = 1,Time do
-Time = Time - 1
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "Error",Text = "You wait time [ "..Time.." ] receive.",Icon = "rbxassetid://7733658504",Duration = 1})
-wait(1)
-end
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-for i, v in pairs(workspace.Maze:GetChildren()) do
-if v.Name == "Part" and v:FindFirstChild("A0") and v:FindFirstChild("ClickDetector") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,-20,0)
-v.ClickDetector.MouseClick:Connect(function()
-game.Workspace.Ruins.Elude.Glove.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-end)
-end
-end
-end)
-wait(0.7)
-pcall(function()
-	fireclickdetector(game.Workspace.CounterLever.ClickDetector)
-	repeat task.wait() until Time == 0
-	for i, v in pairs(workspace.Maze:GetChildren()) do
-		if v.Name == "Part" and v:FindFirstChild("A0") and v:FindFirstChild("ClickDetector") then
-			fireclickdetector(v.ClickDetector)
-		end
-	end
-end)
-    ]])
-elseif not teleportFunc then
-Notification("Bruh, Not only executor you autoexe", _G.TimeNotify)
-end
 game:GetService("TeleportService"):Teleport(11828384869)
-    end
 })
 
 Badge1Group:AddButton({
@@ -3826,7 +3782,7 @@ end
 })
 
 Badge2Group:AddButton({
-    Text = "Get Glove Pyscho (enter limbo first)",
+    Text = "Get Pyscho",
     Func = function()
 if game.Workspace:FindFirstChild("RepressedMemoriesMap") then
 OldPlayerCF = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
@@ -3861,7 +3817,7 @@ if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and gam
 	game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("FreezeBV"):Destroy()
 end
 else
-Notification("You have enter limbo [ don't show all, not work ]", _G.TimeNotify)
+Notification("You have to enter limbo", _G.TimeNotify)
 end
     end
 })
@@ -3883,7 +3839,7 @@ local Dialog8Step = {
     [7] = "STEP 5",
     [8] = "STEP 6",
     [9] = "STEP 7",
-    [10] = "STEP 8, DO IT but first if he didnt say simon says do the thing otherwise"
+    [10] = "STEP 8, DO IT but first if he didnt say simon says, do the thing otherwise"
 }
 if rm and dialog then
     local NumberQuest = 1
