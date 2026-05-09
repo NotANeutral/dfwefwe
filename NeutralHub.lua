@@ -14147,13 +14147,13 @@ task.spawn(function()
                 local hrp = v.Character:FindFirstChild("HumanoidRootPart")
                 if hrp then
                     hrp.Size = Vector3.new(_G.ReachHitbox or 5, _G.ReachHitbox or 5, _G.ReachHitbox or 5)
-                    hrp.Transparency = 0.75
+                    hrp.Transparency = 0.8
 
                     if not v.Character:FindFirstChild("HitboxHighlight") then
                         local outline = Instance.new("Highlight")
                         outline.Name = "HitboxHighlight"
                         outline.FillTransparency = 1
-                        outline.OutlineTransparency = 0.6
+                        outline.OutlineTransparency = 0.8
                         outline.Parent = v.Character
                     end
                 end
@@ -14683,6 +14683,79 @@ Misc1Group:AddToggle("Free Emote", {
 Animation(Value)
     end
 })
+
+elseif game.PlaceId == 127174121130060 then
+    Window = Library:CreateWindow({
+        Title = "Glove Game",
+        Center = true,
+        AutoShow = true,
+        Resizable = true,
+        Footer = "OMEGASIGMA_NEUTRALHUB_VER12331_YEA",
+        Icon = 113431335912495,
+        ShowCustomCursor = true,
+        NotifySide = "Right",
+        TabPadding = 2,
+        MenuFadeTime = 0
+    })
+
+    Tabs = {
+        Tab = Window:AddTab("Misc", "rbxassetid://4370318685"),
+        ["UI Settings"] = Window:AddTab("UI Settings", "rbxassetid://7733955511")
+    }
+    local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
+
+Misc1Group:AddToggle("Hitbox Player", {
+    Text = "Hitbox Player",
+    Default = false, 
+    Callback = function(Value)
+
+_G.HitboxPlayer = Value
+
+task.spawn(function()
+    while _G.HitboxPlayer do
+        for _, v in pairs(game.Players:GetPlayers()) do
+            if v ~= game.Players.LocalPlayer and v.Character then
+                local hrp = v.Character:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    hrp.Size = Vector3.new(_G.ReachHitbox or 5, _G.ReachHitbox or 5, _G.ReachHitbox or 5)
+                    hrp.Transparency = 0.8
+
+                    if not v.Character:FindFirstChild("HitboxHighlight") then
+                        local outline = Instance.new("Highlight")
+                        outline.Name = "HitboxHighlight"
+                        outline.FillTransparency = 1
+                        outline.OutlineTransparency = 0.8
+                        outline.Parent = v.Character
+                    end
+                end
+            end
+        end
+        task.wait(0.2)
+    end
+
+    -- reset
+    for _, v in pairs(game.Players:GetPlayers()) do
+        if v ~= game.Players.LocalPlayer and v.Character then
+            local hrp = v.Character:FindFirstChild("HumanoidRootPart")
+            if hrp then
+                hrp.Size = Vector3.new(2, 2, 1)
+                hrp.Transparency = 1
+            end
+
+            local hl = v.Character:FindFirstChild("HitboxHighlight")
+            if hl then hl:Destroy() end
+        end
+    end
+end)
+
+    end
+}):AddKeyPicker("Hitbox", {
+   Default = "Z",
+   Text = "Extend Hitbox",
+   Mode = "Toggle",
+   SyncToggleState = true
+})
+
 elseif game.PlaceId == 14422118326 then
 Window = Library:CreateWindow({
     Title = "Null Maze",
