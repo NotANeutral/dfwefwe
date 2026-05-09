@@ -14684,7 +14684,7 @@ Animation(Value)
     end
 })
 
-elseif game.PlaceId == 127174121130060 then
+elseif game.PlaceId == 127174121130060 or game.PlaceId == 12982464993 then
     Window = Library:CreateWindow({
         Title = "Glove Game",
         Center = true,
@@ -14721,9 +14721,7 @@ Misc1Group:AddToggle("Hitbox Player", {
     Text = "Hitbox Player",
     Default = false, 
     Callback = function(Value)
-
 _G.HitboxPlayer = Value
-
 task.spawn(function()
     while _G.HitboxPlayer do
         for _, v in pairs(game.Players:GetPlayers()) do
@@ -14745,8 +14743,6 @@ task.spawn(function()
         end
         task.wait(0.2)
     end
-
-    -- reset
     for _, v in pairs(game.Players:GetPlayers()) do
         if v ~= game.Players.LocalPlayer and v.Character then
             local hrp = v.Character:FindFirstChild("HumanoidRootPart")
@@ -14760,7 +14756,6 @@ task.spawn(function()
         end
     end
 end)
-
     end
 }):AddKeyPicker("Hitbox", {
    Default = "Z",
@@ -15133,7 +15128,7 @@ Misc1Group:AddToggle("Start Fly", {
 Fly(Value)
 	end
 }):AddKeyPicker("Fly", {
-   Default = "R",
+   Default = "na",
    Text = "Fly",
    Mode = "Toggle",
    SyncToggleState = true
@@ -17301,7 +17296,7 @@ function InTable(t, value)
 end
 
 Window = Library:CreateWindow({
-    Title = "Neutral Hub - JOB APPLICATION!!! 📦",
+    Title = "JOB APPLICATION!!!",
     Center = true,
     AutoShow = true,
     Resizable = true,
