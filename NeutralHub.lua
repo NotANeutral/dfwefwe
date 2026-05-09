@@ -14704,6 +14704,19 @@ elseif game.PlaceId == 127174121130060 then
     }
     local Misc1Group = Tabs.Tab:AddLeftGroupbox("Misc")
 
+_G.ReachHitbox = 10
+Misc1Group:AddSlider("Reach HitBox", {
+    Text = "Reach Hitbox",
+    Default = 10,
+    Min = 5,
+    Max = 25,
+    Rounding = 0,
+    Compact = true,
+    Callback = function(Value)
+_G.ReachHitbox = Value
+    end
+})
+
 Misc1Group:AddToggle("Hitbox Player", {
     Text = "Hitbox Player",
     Default = false, 
