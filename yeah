@@ -1,11 +1,17 @@
 local Players = game:GetService("Players")
 local TeleportService = game:GetService("TeleportService")
 
-local player = Players.LocalPlayer
 local queue = queue_on_teleport or queueonteleport
 
 local function checkTeam()
     repeat task.wait() until game:IsLoaded()
+task.wait(5)
+
+local player = game:GetService("Players").LocalPlayer
+
+print("PLACE:", game.PlaceId)
+print("JOB:", game.JobId)
+print("TEAM:", player.Team and player.Team.Name or "NO TEAM")
     repeat task.wait() until player.Team ~= nil
 
     if player.Team.Name == "Health Inspector" then
