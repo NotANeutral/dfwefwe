@@ -15,7 +15,7 @@ local function checkTeam()
 
     print("Team:", player.Team.Name, "-> REJOIN")
 
-    queue("loadstring(game:HttpGet('ТУТ_RAW_URL_ЦЬОГО_Ж_СКРИПТА'))()")
+    queue("loadstring(game:HttpGet('https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/yeah'))()")
 
     task.wait(0.5)
 
