@@ -1,0 +1,29 @@
+local Players = game:GetService("Players")
+local TeleportService = game:GetService("TeleportService")
+
+local player = Players.LocalPlayer
+local queue = queue_on_teleport or queueonteleport
+
+local function checkTeam()
+    repeat task.wait() until game:IsLoaded()
+    repeat task.wait() until player.Team ~= nil
+
+    if player.Team.Name == "Health Inspector" then
+        print("Health Inspector! STOP")
+        return
+    end
+
+    print("Team:", player.Team.Name, "-> REJOIN")
+
+    queue("loadstring(game:HttpGet('ТУТ_RAW_URL_ЦЬОГО_Ж_СКРИПТА'))()")
+
+    task.wait(0.5)
+
+    TeleportService:TeleportToPlaceInstance(
+        game.PlaceId,
+        game.JobId,
+        player
+    )
+end
+
+checkTeam()
