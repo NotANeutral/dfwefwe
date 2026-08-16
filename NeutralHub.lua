@@ -1182,8 +1182,8 @@ end
 
 local ESPLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/wefwef.lua"))()
-local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/ThemeManagerCopy.lua"))()
-local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/Library/LinoriaLib/addons/SaveManagerCopy.lua"))()
+local ThemeManager = loadstring(game:HttpGet(RepoAsset("addons/ThemeManager.lua")))()
+local SaveManager = loadstring(game:HttpGet(RepoAsset("addons/SaveManager.lua")))()
 local Options = Library.Options
 local Toggles = Library.Toggles
 
