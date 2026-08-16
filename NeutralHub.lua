@@ -1180,18 +1180,10 @@ elseif game.PlaceId == 9431156611 then
 	end
 end
 
-
-local repo = "https://raw.githubusercontent.com/tanhoangviet/Obsidian-UI-Modded/main/"
-local repoCacheKey = tostring(os.time())
-local function RepoAsset(Path)
-    return repo .. Path .. "?v=" .. repoCacheKey
-end
-
-
 local ESPLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/wefwef.lua"))()
-local ThemeManager = loadstring(game:HttpGet(RepoAsset("addons/ThemeManager.lua")))()
-local SaveManager = loadstring(game:HttpGet(RepoAsset("addons/SaveManager.lua")))()
+local ThemeManager = loadstring(game:HttpGet(RepoAsset("https://raw.githubusercontent.com/tanhoangviet/Obsidian-UI-Modded/main/addons/ThemeManager.lua")))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/tanhoangviet/Obsidian-UI-Modded/main/addons/SaveManager.lua")))()
 local Options = Library.Options
 local Toggles = Library.Toggles
 
