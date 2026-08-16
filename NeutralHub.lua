@@ -1182,6 +1182,10 @@ end
 
 
 local repo = "https://raw.githubusercontent.com/tanhoangviet/Obsidian-UI-Modded/main/"
+local repoCacheKey = tostring(os.time())
+local function RepoAsset(Path)
+    return repo .. Path .. "?v=" .. repoCacheKey
+end
 
 
 local ESPLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua"))()
