@@ -1180,6 +1180,10 @@ elseif game.PlaceId == 9431156611 then
 	end
 end
 
+
+local repo = "https://raw.githubusercontent.com/tanhoangviet/Obsidian-UI-Modded/main/"
+
+
 local ESPLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/Articles-Hub/ROBLOXScript/refs/heads/main/SCRIPT/Esp.lua"))()
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NotANeutral/dfwefwe/refs/heads/main/wefwef.lua"))()
 local ThemeManager = loadstring(game:HttpGet(RepoAsset("addons/ThemeManager.lua")))()
