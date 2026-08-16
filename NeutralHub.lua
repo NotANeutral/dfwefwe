@@ -9,7 +9,7 @@ end
 if LoadingScriptSlap then return end
 LoadingScriptSlap = true
 _G.ConnectFun = {}
-function TweenTp(Part, CFnew, Body, Speed
+function TweenTp(Part, CFnew, Body, Speed)
 BodyEnter = Body
 if BodyEnter == true then
 if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid") and game.Players.LocalPlayer.Character.Humanoid.RootPart and game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("VelocityHandler") == nil then
